@@ -1,631 +1,411 @@
 <!DOCTYPE html>
-<html lang="ru" id="htmlRoot">
+<html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Таблиці калорійності продуктів та страв</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
-    <style>
-        @media print {
-            .no-print { display: none !important; }
-            body { background: white !important; color: black !important; }
-        }
-    </style>
-    <script>
-        function toggleTheme() {
-            const root = document.getElementById('htmlRoot');
-            if (root.classList.contains('dark')) {
-                root.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                root.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            if (savedTheme === 'dark') {
-                document.getElementById('htmlRoot').classList.add('dark');
-            }
-        });
-
-        // Живой поиск по продуктам
-        function filterTable() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let rows = document.querySelectorAll('.product-row');
-            let categories = document.querySelectorAll('.category-card');
-
-            rows.forEach(row => {
-                let text = row.innerText.toLowerCase();
-                if (text.includes(input)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            });
-        }
-    </script>
+<meta charset="UTF-8">
+<title>Таблиця калорійності та ХО</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; color: #333; }
+  h2 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 30px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+  th { background-color: #f4f4f4; }
+  tr:nth-child(even) { background-color: #fafafa; }
+</style>
 </head>
-<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans min-h-screen pb-16 transition-colors duration-200">
+<body>
 
-    <!-- Шапка -->
-    <header class="bg-emerald-700 text-white p-4 shadow-md sticky top-0 z-50 no-print">
-        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
-            <h1 class="text-lg font-bold flex items-center gap-2">
-                <span>🍎</span> Таблиці калорійності
-            </h1>
-            <div class="flex items-center gap-2 w-full sm:w-auto">
-                <input type="text" id="searchInput" oninput="filterTable()" placeholder="🔍 Пошук продукту..." 
-                       class="w-full sm:w-64 px-3 py-1.5 rounded-lg text-slate-800 text-sm focus:outline-none">
-                <button onclick="toggleTheme()" class="px-3 py-1.5 bg-emerald-800 hover:bg-emerald-600 rounded-lg text-sm font-bold transition-colors">
-                    🌙/☀️
-                </button>
-            </div>
-        </div>
-    </header>
+<h1>Таблиця калорійності та хлібних одиниць (ХО)</h1>
+<p><em>Розрахунок ХО виконано виходячи з того, що 1 ХО = 12 г вуглеводів (для продуктів, що містять вуглеводи; білки та жири вказані як 0 ХО або не впливають безпосередньо на розрахунок хлібних одиниць).</em></p>
 
-    <!-- Основной контент -->
-    <main class="max-w-4xl mx-auto p-4 space-y-6 mt-4">
+<h2>🍲 Готові страви</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Битки яловичі</td><td>235</td><td>0.5</td></tr>
+<tr><td>Битки рибні</td><td>133</td><td>0.5</td></tr>
+<tr><td>Млинці з маслом</td><td>235</td><td>1.3</td></tr>
+<tr><td>Млинці з творогом</td><td>195</td><td>1.5</td></tr>
+<tr><td>Борщ зі свіжої капусти (500 г.)</td><td>116</td><td>0.4</td></tr>
+<tr><td>Борщ з квашеної капусти (500 г.)</td><td>156</td><td>0.5</td></tr>
+<tr><td>Бульйон м'ясний</td><td>20</td><td>0.0</td></tr>
+<tr><td>Бутерброд з ковбасою вареною</td><td>150</td><td>1.0</td></tr>
+<tr><td>Бутерброд з ікрою червоною</td><td>110</td><td>0.9</td></tr>
+<tr><td>Вареники з картоплею</td><td>221</td><td>2.1</td></tr>
+<tr><td>Вареники з творогом</td><td>235</td><td>1.7</td></tr>
+<tr><td>Вареники з творогом та сметаною</td><td>347</td><td>1.7</td></tr>
+<tr><td>Вінегрет</td><td>128</td><td>0.6</td></tr>
+<tr><td>Гуляш яловичий</td><td>180</td><td>0.3</td></tr>
+<tr><td>Гуляш свинячий</td><td>355</td><td>0.3</td></tr>
+<tr><td>Запіканка сирна</td><td>199</td><td>1.0</td></tr>
+<tr><td>Ікра баклажанна</td><td>91</td><td>0.5</td></tr>
+<tr><td>Ікра кабачкова</td><td>90</td><td>0.6</td></tr>
+<tr><td>Картопляні оладки</td><td>662</td><td>1.5</td></tr>
+<tr><td>Картопля відварна з маслом</td><td>126</td><td>1.2</td></tr>
+<tr><td>Картопля відварна зі сметаною</td><td>117</td><td>1.2</td></tr>
+<tr><td>Картопля відварна з соусом</td><td>90</td><td>1.3</td></tr>
+<tr><td>Какао без цукру</td><td>60</td><td>0.5</td></tr>
+<tr><td>Какао на згущеному молоці</td><td>90</td><td>1.2</td></tr>
+<tr><td>Каша гречана</td><td>197</td><td>1.4</td></tr>
+<tr><td>Каша пшоняна</td><td>168</td><td>1.4</td></tr>
+<tr><td>Каша рисова</td><td>152</td><td>1.5</td></tr>
+<tr><td>Каша перлова</td><td>137</td><td>1.3</td></tr>
+<tr><td>Каша ячна</td><td>141</td><td>1.3</td></tr>
+<tr><td>Каша пшенична</td><td>167</td><td>1.4</td></tr>
+<tr><td>Кисіль зі свіжих ягід</td><td>105</td><td>2.6</td></tr>
+<tr><td>Компот із сухофруктів</td><td>170</td><td>4.2</td></tr>
+<tr><td>Кава розчинна без цукру</td><td>2</td><td>0.0</td></tr>
+<tr><td>Кава чорна з цукром</td><td>10</td><td>0.6</td></tr>
+<tr><td>Кава з молоком без цукру</td><td>40</td><td>0.3</td></tr>
+<tr><td>Кава з вершками без цукру</td><td>59</td><td>0.2</td></tr>
+<tr><td>Кава з молоком і цукром</td><td>77</td><td>0.8</td></tr>
+<tr><td>Кава на згущеному молоці</td><td>67</td><td>1.0</td></tr>
+<tr><td>Кавовий напій</td><td>80</td><td>1.2</td></tr>
+<tr><td>Локшина домашня</td><td>431</td><td>1.9</td></tr>
+<tr><td>Макарони</td><td>153</td><td>1.9</td></tr>
+<tr><td>М'ясо тушковане</td><td>175</td><td>0.2</td></tr>
+<tr><td>Напій з сиропу</td><td>141</td><td>3.5</td></tr>
+<tr><td>Окрошка м'ясна</td><td>269</td><td>0.6</td></tr>
+<tr><td>Омлет</td><td>250</td><td>0.3</td></tr>
+<tr><td>Печінка яловича смажена</td><td>200</td><td>0.4</td></tr>
+<tr><td>Печінка по-строгановськи</td><td>260</td><td>0.5</td></tr>
+<tr><td>Плов яловичий</td><td>359</td><td>1.5</td></tr>
+<tr><td>Пюре з маслом</td><td>141</td><td>1.2</td></tr>
+<tr><td>Пюре моркв'яне</td><td>147</td><td>1.0</td></tr>
+<tr><td>Розсольник</td><td>246</td><td>0.8</td></tr>
+<tr><td>Салат з огірків</td><td>76</td><td>0.2</td></tr>
+<tr><td>Салат з помідорів</td><td>108</td><td>0.3</td></tr>
+<tr><td>Салат з редьки</td><td>128</td><td>0.5</td></tr>
+<tr><td>Салат з редису</td><td>117</td><td>0.3</td></tr>
+<tr><td>Салат з капусти</td><td>83</td><td>0.4</td></tr>
+<tr><td>Салат з квашеної капусти</td><td>69</td><td>0.3</td></tr>
+<tr><td>Салат з буряка</td><td>67</td><td>0.7</td></tr>
+<tr><td>Салат м'ясний</td><td>385</td><td>0.4</td></tr>
+<tr><td>Серце в соусі</td><td>168</td><td>0.4</td></tr>
+<tr><td>Сік яблучний</td><td>44</td><td>1.0</td></tr>
+<tr><td>Сік сливовий</td><td>66</td><td>1.6</td></tr>
+<tr><td>Сік абрикосовий</td><td>55</td><td>1.3</td></tr>
+<tr><td>Сік вишневий</td><td>54</td><td>1.2</td></tr>
+<tr><td>Сік виноградний</td><td>72</td><td>1.7</td></tr>
+<tr><td>Сік апельсиновий</td><td>54</td><td>1.2</td></tr>
+<tr><td>Студень яловичий</td><td>40</td><td>0.1</td></tr>
+<tr><td>Суп картопляний</td><td>233</td><td>0.8</td></tr>
+<tr><td>Суп з макаронами</td><td>247</td><td>0.9</td></tr>
+<tr><td>Суп молочний з макаронами</td><td>390</td><td>1.2</td></tr>
+<tr><td>Суп молочний рисовий</td><td>379</td><td>1.3</td></tr>
+<tr><td>Суп гороховий</td><td>242</td><td>1.1</td></tr>
+<tr><td>Чай без цукру</td><td>2</td><td>0.0</td></tr>
+<tr><td>Чай з цукром</td><td>29</td><td>0.7</td></tr>
+<tr><td>Чай з лимоном і цукром</td><td>30</td><td>0.7</td></tr>
+<tr><td>Чай з молоком і цукром</td><td>44</td><td>0.9</td></tr>
+<tr><td>Чай з вершками та цукром</td><td>71</td><td>0.8</td></tr>
+<tr><td>Шніцель</td><td>168</td><td>0.5</td></tr>
+<tr><td>Щи зі свіжої капусти</td><td>88</td><td>0.3</td></tr>
+<tr><td>Яйця варені (2 шт.)</td><td>126</td><td>0.1</td></tr>
+<tr><td>Яйця смажені (2 шт.)</td><td>201</td><td>0.2</td></tr>
+</table>
 
-        <!-- Карточка категории шаблоном -->
-        <!-- ГОТОВЫЕ БЛЮДА -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🍲 Готові страви</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Биточки говяжьи</td><td class="py-2 text-right font-semibold text-emerald-600">235</td></tr>
-                        <tr class="product-row"><td class="py-2">Биточки рыбные</td><td class="py-2 text-right font-semibold text-emerald-600">133</td></tr>
-                        <tr class="product-row"><td class="py-2">Блины с маслом</td><td class="py-2 text-right font-semibold text-emerald-600">235</td></tr>
-                        <tr class="product-row"><td class="py-2">Блины с творогом</td><td class="py-2 text-right font-semibold text-emerald-600">195</td></tr>
-                        <tr class="product-row"><td class="py-2">Борщ из свежей капусты (500 г.)</td><td class="py-2 text-right font-semibold text-emerald-600">116</td></tr>
-                        <tr class="product-row"><td class="py-2">Борщ из квашеной капусты (500 г.)</td><td class="py-2 text-right font-semibold text-emerald-600">156</td></tr>
-                        <tr class="product-row"><td class="py-2">Бульон мясной</td><td class="py-2 text-right font-semibold text-emerald-600">20</td></tr>
-                        <tr class="product-row"><td class="py-2">Бутерброд с колбасой вареной</td><td class="py-2 text-right font-semibold text-emerald-600">150</td></tr>
-                        <tr class="product-row"><td class="py-2">Бутерброд с икрой красной</td><td class="py-2 text-right font-semibold text-emerald-600">110</td></tr>
-                        <tr class="product-row"><td class="py-2">Вареники с картофелем</td><td class="py-2 text-right font-semibold text-emerald-600">221</td></tr>
-                        <tr class="product-row"><td class="py-2">Вареники с творогом</td><td class="py-2 text-right font-semibold text-emerald-600">235</td></tr>
-                        <tr class="product-row"><td class="py-2">Вареники с творогом и сметаной</td><td class="py-2 text-right font-semibold text-emerald-600">347</td></tr>
-                        <tr class="product-row"><td class="py-2">Винегрет</td><td class="py-2 text-right font-semibold text-emerald-600">128</td></tr>
-                        <tr class="product-row"><td class="py-2">Гуляш говяжий</td><td class="py-2 text-right font-semibold text-emerald-600">180</td></tr>
-                        <tr class="product-row"><td class="py-2">Гуляш свиной</td><td class="py-2 text-right font-semibold text-emerald-600">355</td></tr>
-                        <tr class="product-row"><td class="py-2">Запеканка творожная</td><td class="py-2 text-right font-semibold text-emerald-600">199</td></tr>
-                        <tr class="product-row"><td class="py-2">Икра баклажанная</td><td class="py-2 text-right font-semibold text-emerald-600">91</td></tr>
-                        <tr class="product-row"><td class="py-2">Икра кабачковая</td><td class="py-2 text-right font-semibold text-emerald-600">90</td></tr>
-                        <tr class="product-row"><td class="py-2">Картофельные оладьи</td><td class="py-2 text-right font-semibold text-emerald-600">662</td></tr>
-                        <tr class="product-row"><td class="py-2">Картофель отварной с маслом</td><td class="py-2 text-right font-semibold text-emerald-600">126</td></tr>
-                        <tr class="product-row"><td class="py-2">Картофель отварной со сметаной</td><td class="py-2 text-right font-semibold text-emerald-600">117</td></tr>
-                        <tr class="product-row"><td class="py-2">Картофель отварной с соусом</td><td class="py-2 text-right font-semibold text-emerald-600">90</td></tr>
-                        <tr class="product-row"><td class="py-2">Какао без сахара</td><td class="py-2 text-right font-semibold text-emerald-600">60</td></tr>
-                        <tr class="product-row"><td class="py-2">Какао на сгущеном молоке</td><td class="py-2 text-right font-semibold text-emerald-600">90</td></tr>
-                        <tr class="product-row"><td class="py-2">Каша гречневая</td><td class="py-2 text-right font-semibold text-emerald-600">197</td></tr>
-                        <tr class="product-row"><td class="py-2">Каша пшенная</td><td class="py-2 text-right font-semibold text-emerald-600">168</td></tr>
-                        <tr class="product-row"><td class="py-2">Каша рисовая</td><td class="py-2 text-right font-semibold text-emerald-600">152</td></tr>
-                        <tr class="product-row"><td class="py-2">Каша перловая</td><td class="py-2 text-right font-semibold text-emerald-600">137</td></tr>
-                        <tr class="product-row"><td class="py-2">Каша ячневая</td><td class="py-2 text-right font-semibold text-emerald-600">141</td></tr>
-                        <tr class="product-row"><td class="py-2">Каша пшеничная</td><td class="py-2 text-right font-semibold text-emerald-600">167</td></tr>
-                        <tr class="product-row"><td class="py-2">Кисель из свежих ягод</td><td class="py-2 text-right font-semibold text-emerald-600">105</td></tr>
-                        <tr class="product-row"><td class="py-2">Компот из сухофруктов</td><td class="py-2 text-right font-semibold text-emerald-600">170</td></tr>
-                        <tr class="product-row"><td class="py-2">Кофе растворимый без сахара</td><td class="py-2 text-right font-semibold text-emerald-600">2</td></tr>
-                        <tr class="product-row"><td class="py-2">Кофе черный с сахаром</td><td class="py-2 text-right font-semibold text-emerald-600">10</td></tr>
-                        <tr class="product-row"><td class="py-2">Кофе с молоком без сахара</td><td class="py-2 text-right font-semibold text-emerald-600">40</td></tr>
-                        <tr class="product-row"><td class="py-2">Кофе со сливками без сахара</td><td class="py-2 text-right font-semibold text-emerald-600">59</td></tr>
-                        <tr class="product-row"><td class="py-2">Кофе с молоком и сахаром</td><td class="py-2 text-right font-semibold text-emerald-600">77</td></tr>
-                        <tr class="product-row"><td class="py-2">Кофе на сгущеном молоке</td><td class="py-2 text-right font-semibold text-emerald-600">67</td></tr>
-                        <tr class="product-row"><td class="py-2">Кофейный напиток</td><td class="py-2 text-right font-semibold text-emerald-600">80</td></tr>
-                        <tr class="product-row"><td class="py-2">Лапша домашняя</td><td class="py-2 text-right font-semibold text-emerald-600">431</td></tr>
-                        <tr class="product-row"><td class="py-2">Макароны</td><td class="py-2 text-right font-semibold text-emerald-600">153</td></tr>
-                        <tr class="product-row"><td class="py-2">Мясо тушеное</td><td class="py-2 text-right font-semibold text-emerald-600">175</td></tr>
-                        <tr class="product-row"><td class="py-2">Напиток из сиропа</td><td class="py-2 text-right font-semibold text-emerald-600">141</td></tr>
-                        <tr class="product-row"><td class="py-2">Окрошка мясная</td><td class="py-2 text-right font-semibold text-emerald-600">269</td></tr>
-                        <tr class="product-row"><td class="py-2">Омлет</td><td class="py-2 text-right font-semibold text-emerald-600">250</td></tr>
-                        <tr class="product-row"><td class="py-2">Печень говяжья жареная</td><td class="py-2 text-right font-semibold text-emerald-600">200</td></tr>
-                        <tr class="product-row"><td class="py-2">Печень по-строгановски</td><td class="py-2 text-right font-semibold text-emerald-600">260</td></tr>
-                        <tr class="product-row"><td class="py-2">Плов говяжий</td><td class="py-2 text-right font-semibold text-emerald-600">359</td></tr>
-                        <tr class="product-row"><td class="py-2">Пюре с маслом</td><td class="py-2 text-right font-semibold text-emerald-600">141</td></tr>
-                        <tr class="product-row"><td class="py-2">Пюре морковное</td><td class="py-2 text-right font-semibold text-emerald-600">147</td></tr>
-                        <tr class="product-row"><td class="py-2">Рассольник</td><td class="py-2 text-right font-semibold text-emerald-600">246</td></tr>
-                        <tr class="product-row"><td class="py-2">Салат из огурцов</td><td class="py-2 text-right font-semibold text-emerald-600">76</td></tr>
-                        <tr class="product-row"><td class="py-2">Салат из помидоров</td><td class="py-2 text-right font-semibold text-emerald-600">108</td></tr>
-                        <tr class="product-row"><td class="py-2">Салат из редьки</td><td class="py-2 text-right font-semibold text-emerald-600">128</td></tr>
-                        <tr class="product-row"><td class="py-2">Салат из редиса</td><td class="py-2 text-right font-semibold text-emerald-600">117</td></tr>
-                        <tr class="product-row"><td class="py-2">Салат из капусты</td><td class="py-2 text-right font-semibold text-emerald-600">83</td></tr>
-                        <tr class="product-row"><td class="py-2">Салат из квашеной капусты</td><td class="py-2 text-right font-semibold text-emerald-600">69</td></tr>
-                        <tr class="product-row"><td class="py-2">Салат из свеклы</td><td class="py-2 text-right font-semibold text-emerald-600">67</td></tr>
-                        <tr class="product-row"><td class="py-2">Салат мясной</td><td class="py-2 text-right font-semibold text-emerald-600">385</td></tr>
-                        <tr class="product-row"><td class="py-2">Сердце в соусе</td><td class="py-2 text-right font-semibold text-emerald-600">168</td></tr>
-                        <tr class="product-row"><td class="py-2">Сок яблочный</td><td class="py-2 text-right font-semibold text-emerald-600">44</td></tr>
-                        <tr class="product-row"><td class="py-2">Сок сливовый</td><td class="py-2 text-right font-semibold text-emerald-600">66</td></tr>
-                        <tr class="product-row"><td class="py-2">Сок абрикосовый</td><td class="py-2 text-right font-semibold text-emerald-600">55</td></tr>
-                        <tr class="product-row"><td class="py-2">Сок вишневый</td><td class="py-2 text-right font-semibold text-emerald-600">54</td></tr>
-                        <tr class="product-row"><td class="py-2">Сок виноградный</td><td class="py-2 text-right font-semibold text-emerald-600">72</td></tr>
-                        <tr class="product-row"><td class="py-2">Сок апельсиновый</td><td class="py-2 text-right font-semibold text-emerald-600">54</td></tr>
-                        <tr class="product-row"><td class="py-2">Студень говяжий</td><td class="py-2 text-right font-semibold text-emerald-600">40</td></tr>
-                        <tr class="product-row"><td class="py-2">Суп картофельный</td><td class="py-2 text-right font-semibold text-emerald-600">233</td></tr>
-                        <tr class="product-row"><td class="py-2">Суп с макаронами</td><td class="py-2 text-right font-semibold text-emerald-600">247</td></tr>
-                        <tr class="product-row"><td class="py-2">Суп молочный с макаронами</td><td class="py-2 text-right font-semibold text-emerald-600">390</td></tr>
-                        <tr class="product-row"><td class="py-2">Суп молочный рисовый</td><td class="py-2 text-right font-semibold text-emerald-600">379</td></tr>
-                        <tr class="product-row"><td class="py-2">Суп гороховый</td><td class="py-2 text-right font-semibold text-emerald-600">242</td></tr>
-                        <tr class="product-row"><td class="py-2">Чай без сахара</td><td class="py-2 text-right font-semibold text-emerald-600">2</td></tr>
-                        <tr class="product-row"><td class="py-2">Чай с сахаром</td><td class="py-2 text-right font-semibold text-emerald-600">29</td></tr>
-                        <tr class="product-row"><td class="py-2">Чай с лимоном и сахаром</td><td class="py-2 text-right font-semibold text-emerald-600">30</td></tr>
-                        <tr class="product-row"><td class="py-2">Чай с молоком и сахаром</td><td class="py-2 text-right font-semibold text-emerald-600">44</td></tr>
-                        <tr class="product-row"><td class="py-2">Чай со сливками и сахаром</td><td class="py-2 text-right font-semibold text-emerald-600">71</td></tr>
-                        <tr class="product-row"><td class="py-2">Шницель</td><td class="py-2 text-right font-semibold text-emerald-600">168</td></tr>
-                        <tr class="product-row"><td class="py-2">Щи из свежей капусты</td><td class="py-2 text-right font-semibold text-emerald-600">88</td></tr>
-                        <tr class="product-row"><td class="py-2">Яйца вареные (2 шт.)</td><td class="py-2 text-right font-semibold text-emerald-600">126</td></tr>
-                        <tr class="product-row"><td class="py-2">Яйца жареные (2 шт.)</td><td class="py-2 text-right font-semibold text-emerald-600">201</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🌾 Крупи</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Гречана ядриця</td><td>329</td><td>5.8</td></tr>
+<tr><td>Гречаний проділ</td><td>326</td><td>5.7</td></tr>
+<tr><td>Манна</td><td>326</td><td>6.0</td></tr>
+<tr><td>Вівсяна</td><td>345</td><td>5.3</td></tr>
+<tr><td>Перлова</td><td>324</td><td>5.5</td></tr>
+<tr><td>Пшоно</td><td>334</td><td>5.5</td></tr>
+<tr><td>Рисова</td><td>323</td><td>6.2</td></tr>
+<tr><td>Пшенична</td><td>325</td><td>5.9</td></tr>
+<tr><td>Толокно</td><td>357</td><td>5.3</td></tr>
+<tr><td>Ячна</td><td>322</td><td>5.5</td></tr>
+<tr><td>Геркулес</td><td>355</td><td>5.2</td></tr>
+<tr><td>Кукурудзяна</td><td>325</td><td>6.0</td></tr>
+</table>
 
-        <!-- КРУПЫ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🌾 Крупи</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Гречневая ядрица</td><td class="py-2 text-right font-semibold text-emerald-600">329</td></tr>
-                        <tr class="product-row"><td class="py-2">Гречневая продел</td><td class="py-2 text-right font-semibold text-emerald-600">326</td></tr>
-                        <tr class="product-row"><td class="py-2">Манная</td><td class="py-2 text-right font-semibold text-emerald-600">326</td></tr>
-                        <tr class="product-row"><td class="py-2">Овсяная</td><td class="py-2 text-right font-semibold text-emerald-600">345</td></tr>
-                        <tr class="product-row"><td class="py-2">Перловая</td><td class="py-2 text-right font-semibold text-emerald-600">324</td></tr>
-                        <tr class="product-row"><td class="py-2">Пшено</td><td class="py-2 text-right font-semibold text-emerald-600">334</td></tr>
-                        <tr class="product-row"><td class="py-2">Рисовая</td><td class="py-2 text-right font-semibold text-emerald-600">323</td></tr>
-                        <tr class="product-row"><td class="py-2">Пшеничная</td><td class="py-2 text-right font-semibold text-emerald-600">325</td></tr>
-                        <tr class="product-row"><td class="py-2">Толокно</td><td class="py-2 text-right font-semibold text-emerald-600">357</td></tr>
-                        <tr class="product-row"><td class="py-2">Ячневая</td><td class="py-2 text-right font-semibold text-emerald-600">322</td></tr>
-                        <tr class="product-row"><td class="py-2">Геркулес</td><td class="py-2 text-right font-semibold text-emerald-600">355</td></tr>
-                        <tr class="product-row"><td class="py-2">Кукурузная</td><td class="py-2 text-right font-semibold text-emerald-600">325</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🍫 Солодощі та кондитерські вироби</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Вафлі з фруктовими начинками</td><td>342</td><td>5.9</td></tr>
+<tr><td>Вафлі з жировмісними начинками</td><td>530</td><td>4.5</td></tr>
+<tr><td>Тістечко листкове з кремом</td><td>544</td><td>3.6</td></tr>
+<tr><td>Тістечко листкове з яблуком</td><td>454</td><td>4.2</td></tr>
+<tr><td>Тістечко бісквітне з фруктовою начинкою</td><td>344</td><td>5.0</td></tr>
+<tr><td>Пряники</td><td>336</td><td>6.0</td></tr>
+<tr><td>Торт бісквітний</td><td>386</td><td>4.3</td></tr>
+<tr><td>Мед</td><td>308</td><td>6.7</td></tr>
+<tr><td>Драже фруктове</td><td>384</td><td>7.5</td></tr>
+<tr><td>Зефір</td><td>299</td><td>6.4</td></tr>
+<tr><td>Ірис</td><td>387</td><td>6.7</td></tr>
+<tr><td>Мармелад</td><td>296</td><td>6.9</td></tr>
+<tr><td>Карамель</td><td>296</td><td>7.8</td></tr>
+<tr><td>Цукерки, глазуровані шоколадом</td><td>396</td><td>4.3</td></tr>
+<tr><td>Пастила</td><td>305</td><td>6.5</td></tr>
+<tr><td>Цукор</td><td>374</td><td>8.3</td></tr>
+<tr><td>Халва тахінна</td><td>510</td><td>2.6</td></tr>
+<tr><td>Халва соняшникова</td><td>516</td><td>2.5</td></tr>
+<tr><td>Шоколад темний</td><td>540</td><td>2.6</td></tr>
+<tr><td>Шоколад молочний</td><td>547</td><td>4.3</td></tr>
+</table>
 
-        <!-- СЛАДОСТИ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🍫 Солодощі та кондитерські вироби</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Вафли с фруктовыми начинками</td><td class="py-2 text-right font-semibold text-emerald-600">342</td></tr>
-                        <tr class="product-row"><td class="py-2">Вафли с жиросодержащими начинками</td><td class="py-2 text-right font-semibold text-emerald-600">530</td></tr>
-                        <tr class="product-row"><td class="py-2">Пирожное слоёное с кремом</td><td class="py-2 text-right font-semibold text-emerald-600">544</td></tr>
-                        <tr class="product-row"><td class="py-2">Пирожное слоёное с яблоком</td><td class="py-2 text-right font-semibold text-emerald-600">454</td></tr>
-                        <tr class="product-row"><td class="py-2">Пирожное бисквитное с фруктовой начинкой</td><td class="py-2 text-right font-semibold text-emerald-600">344</td></tr>
-                        <tr class="product-row"><td class="py-2">Пряники</td><td class="py-2 text-right font-semibold text-emerald-600">336</td></tr>
-                        <tr class="product-row"><td class="py-2">Торт бисквитный</td><td class="py-2 text-right font-semibold text-emerald-600">386</td></tr>
-                        <tr class="product-row"><td class="py-2">Мёд</td><td class="py-2 text-right font-semibold text-emerald-600">308</td></tr>
-                        <tr class="product-row"><td class="py-2">Драже фруктовое</td><td class="py-2 text-right font-semibold text-emerald-600">384</td></tr>
-                        <tr class="product-row"><td class="py-2">Зефир</td><td class="py-2 text-right font-semibold text-emerald-600">299</td></tr>
-                        <tr class="product-row"><td class="py-2">Ирис</td><td class="py-2 text-right font-semibold text-emerald-600">387</td></tr>
-                        <tr class="product-row"><td class="py-2">Мармелад</td><td class="py-2 text-right font-semibold text-emerald-600">296</td></tr>
-                        <tr class="product-row"><td class="py-2">Карамель</td><td class="py-2 text-right font-semibold text-emerald-600">296</td></tr>
-                        <tr class="product-row"><td class="py-2">Конфеты, глазированные шоколадом</td><td class="py-2 text-right font-semibold text-emerald-600">396</td></tr>
-                        <tr class="product-row"><td class="py-2">Пастила</td><td class="py-2 text-right font-semibold text-emerald-600">305</td></tr>
-                        <tr class="product-row"><td class="py-2">Сахар</td><td class="py-2 text-right font-semibold text-emerald-600">374</td></tr>
-                        <tr class="product-row"><td class="py-2">Халва тахинная</td><td class="py-2 text-right font-semibold text-emerald-600">510</td></tr>
-                        <tr class="product-row"><td class="py-2">Халва подсолнечная</td><td class="py-2 text-right font-semibold text-emerald-600">516</td></tr>
-                        <tr class="product-row"><td class="py-2">Шоколад тёмный</td><td class="py-2 text-right font-semibold text-emerald-600">540</td></tr>
-                        <tr class="product-row"><td class="py-2">Шоколад молочный</td><td class="py-2 text-right font-semibold text-emerald-600">547</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🍞 Борошняні продукти та хліб</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Хліб житній</td><td>214</td><td>3.4</td></tr>
+<tr><td>Хліб пшеничний з борошна I сорту</td><td>254</td><td>4.0</td></tr>
+<tr><td>Здобна випічка</td><td>297</td><td>4.3</td></tr>
+<tr><td>Бублики</td><td>312</td><td>5.6</td></tr>
+<tr><td>Сушки</td><td>330</td><td>6.0</td></tr>
+<tr><td>Сухарі пшеничні</td><td>331</td><td>5.8</td></tr>
+<tr><td>Сухарі вершкові</td><td>397</td><td>5.0</td></tr>
+<tr><td>Борошно пшеничне вищого сорту</td><td>327</td><td>5.9</td></tr>
+<tr><td>Борошно пшеничне I сорту</td><td>329</td><td>5.7</td></tr>
+<tr><td>Борошно пшеничне II сорту</td><td>328</td><td>5.6</td></tr>
+<tr><td>Борошно житнє</td><td>326</td><td>5.4</td></tr>
+</table>
 
-        <!-- МУЧНЫЕ ПРОДУКТЫ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🍞 Борошняні продукти та хліб</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Хлеб ржаной</td><td class="py-2 text-right font-semibold text-emerald-600">214</td></tr>
-                        <tr class="product-row"><td class="py-2">Хлеб пшеничный из муки I сорта</td><td class="py-2 text-right font-semibold text-emerald-600">254</td></tr>
-                        <tr class="product-row"><td class="py-2">Сдобная выпечка</td><td class="py-2 text-right font-semibold text-emerald-600">297</td></tr>
-                        <tr class="product-row"><td class="py-2">Баранки</td><td class="py-2 text-right font-semibold text-emerald-600">312</td></tr>
-                        <tr class="product-row"><td class="py-2">Сушки</td><td class="py-2 text-right font-semibold text-emerald-600">330</td></tr>
-                        <tr class="product-row"><td class="py-2">Сухари пшеничные</td><td class="py-2 text-right font-semibold text-emerald-600">331</td></tr>
-                        <tr class="product-row"><td class="py-2">Сухари сливочные</td><td class="py-2 text-right font-semibold text-emerald-600">397</td></tr>
-                        <tr class="product-row"><td class="py-2">Мука пшеничная высшего сорта</td><td class="py-2 text-right font-semibold text-emerald-600">327</td></tr>
-                        <tr class="product-row"><td class="py-2">Мука пшеничная I сорта</td><td class="py-2 text-right font-semibold text-emerald-600">329</td></tr>
-                        <tr class="product-row"><td class="py-2">Мука пшеничная II сорта</td><td class="py-2 text-right font-semibold text-emerald-600">328</td></tr>
-                        <tr class="product-row"><td class="py-2">Мука ржаная</td><td class="py-2 text-right font-semibold text-emerald-600">326</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🥚 Яйця та яєчні продукти</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Куряче яйце</td><td>157</td><td>0.1</td></tr>
+<tr><td>Яєчний порошок</td><td>542</td><td>0.3</td></tr>
+<tr><td>Сухий білок</td><td>336</td><td>0.3</td></tr>
+<tr><td>Сухий жовток</td><td>623</td><td>0.2</td></tr>
+<tr><td>Перепелине яйце</td><td>168</td><td>0.1</td></tr>
+</table>
 
-        <!-- ЯЙЦА -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🥚 Яйця та яєчні продукти</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Яйцо куриное</td><td class="py-2 text-right font-semibold text-emerald-600">157</td></tr>
-                        <tr class="product-row"><td class="py-2">Яичный порошок</td><td class="py-2 text-right font-semibold text-emerald-600">542</td></tr>
-                        <tr class="product-row"><td class="py-2">Сухой белок</td><td class="py-2 text-right font-semibold text-emerald-600">336</td></tr>
-                        <tr class="product-row"><td class="py-2">Сухой желток</td><td class="py-2 text-right font-semibold text-emerald-600">623</td></tr>
-                        <tr class="product-row"><td class="py-2">Яйцо перепелиное</td><td class="py-2 text-right font-semibold text-emerald-600">168</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🧈 Масла та жири</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Жир баранячий або яловичий топлений</td><td>897</td><td>0.0</td></tr>
+<tr><td>Шпик свинячий (без шкірки)</td><td>816</td><td>0.0</td></tr>
+<tr><td>Маргарин молочний</td><td>746</td><td>0.1</td></tr>
+<tr><td>Маргарин бутербродний</td><td>744</td><td>0.1</td></tr>
+<tr><td>Майонез</td><td>627</td><td>0.3</td></tr>
+<tr><td>Олія рослинна</td><td>899</td><td>0.0</td></tr>
+<tr><td>Вершкове масло</td><td>748</td><td>0.1</td></tr>
+<tr><td>Масло топлене</td><td>887</td><td>0.0</td></tr>
+</table>
 
-        <!-- МАСЛА И ЖИРЫ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🧈 Масла та жири</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Жир бараний или говяжий топленый</td><td class="py-2 text-right font-semibold text-emerald-600">897</td></tr>
-                        <tr class="product-row"><td class="py-2">Шпик свиной (без шкурки)</td><td class="py-2 text-right font-semibold text-emerald-600">816</td></tr>
-                        <tr class="product-row"><td class="py-2">Маргарин молочный</td><td class="py-2 text-right font-semibold text-emerald-600">746</td></tr>
-                        <tr class="product-row"><td class="py-2">Маргарин бутербродный</td><td class="py-2 text-right font-semibold text-emerald-600">744</td></tr>
-                        <tr class="product-row"><td class="py-2">Майонез</td><td class="py-2 text-right font-semibold text-emerald-600">627</td></tr>
-                        <tr class="product-row"><td class="py-2">Масло растительное</td><td class="py-2 text-right font-semibold text-emerald-600">899</td></tr>
-                        <tr class="product-row"><td class="py-2">Масло сливочное</td><td class="py-2 text-right font-semibold text-emerald-600">748</td></tr>
-                        <tr class="product-row"><td class="py-2">Масло топленое</td><td class="py-2 text-right font-semibold text-emerald-600">887</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🥛 Молоко та молочні продукти</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Бринза з коров'ячого молока</td><td>260</td><td>0.1</td></tr>
+<tr><td>Йогурт натуральний 1.5% жирності</td><td>51</td><td>0.3</td></tr>
+<tr><td>Кефір нежирний</td><td>30</td><td>0.3</td></tr>
+<tr><td>Кефір жирний</td><td>59</td><td>0.3</td></tr>
+<tr><td>Молоко</td><td>58</td><td>0.4</td></tr>
+<tr><td>Молоко ацидофільне</td><td>83</td><td>0.3</td></tr>
+<tr><td>Молоко сухе незбиране</td><td>475</td><td>3.1</td></tr>
+<tr><td>Молоко згущене</td><td>135</td><td>1.2</td></tr>
+<tr><td>Молоко згущене з цукром</td><td>315</td><td>4.7</td></tr>
+<tr><td>Простокваша</td><td>58</td><td>0.3</td></tr>
+<tr><td>Ряжанка</td><td>85</td><td>0.3</td></tr>
+<tr><td>Вершки 10%</td><td>118</td><td>0.3</td></tr>
+<tr><td>Вершки 20%</td><td>205</td><td>0.3</td></tr>
+<tr><td>Сметана 10%</td><td>116</td><td>0.2</td></tr>
+<tr><td>Сметана 20%</td><td>206</td><td>0.3</td></tr>
+<tr><td>Сирки та маса сирна особливі</td><td>340</td><td>2.3</td></tr>
+<tr><td>Сир російський</td><td>371</td><td>0.1</td></tr>
+<tr><td>Сир голландський</td><td>361</td><td>0.1</td></tr>
+<tr><td>Сир швейцарський</td><td>396</td><td>0.1</td></tr>
+<tr><td>Сир плавлений</td><td>226</td><td>0.1</td></tr>
+<tr><td>Сичужний сир жирний (Творог)</td><td>226</td><td>0.1</td></tr>
+<tr><td>Сир напівжирний</td><td>156</td><td>0.1</td></tr>
+<tr><td>Сир нежирний</td><td>86</td><td>0.1</td></tr>
+</table>
 
-        <!-- МОЛОКО И МОЛОЧНЫЕ ПРОДУКТЫ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🥛 Молоко та молочні продукти</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Брынза из коровьего молока</td><td class="py-2 text-right font-semibold text-emerald-600">260</td></tr>
-                        <tr class="product-row"><td class="py-2">Йогурт натуральный 1.5% жирности</td><td class="py-2 text-right font-semibold text-emerald-600">51</td></tr>
-                        <tr class="product-row"><td class="py-2">Кефир нежирный</td><td class="py-2 text-right font-semibold text-emerald-600">30</td></tr>
-                        <tr class="product-row"><td class="py-2">Кефир жирный</td><td class="py-2 text-right font-semibold text-emerald-600">59</td></tr>
-                        <tr class="product-row"><td class="py-2">Молоко</td><td class="py-2 text-right font-semibold text-emerald-600">58</td></tr>
-                        <tr class="product-row"><td class="py-2">Молоко ацидофильное</td><td class="py-2 text-right font-semibold text-emerald-600">83</td></tr>
-                        <tr class="product-row"><td class="py-2">Молоко сухое цельное</td><td class="py-2 text-right font-semibold text-emerald-600">475</td></tr>
-                        <tr class="product-row"><td class="py-2">Молоко сгущеное</td><td class="py-2 text-right font-semibold text-emerald-600">135</td></tr>
-                        <tr class="product-row"><td class="py-2">Молоко сгущеное с сахаром</td><td class="py-2 text-right font-semibold text-emerald-600">315</td></tr>
-                        <tr class="product-row"><td class="py-2">Простокваша</td><td class="py-2 text-right font-semibold text-emerald-600">58</td></tr>
-                        <tr class="product-row"><td class="py-2">Ряженка</td><td class="py-2 text-right font-semibold text-emerald-600">85</td></tr>
-                        <tr class="product-row"><td class="py-2">Сливки 10%</td><td class="py-2 text-right font-semibold text-emerald-600">118</td></tr>
-                        <tr class="product-row"><td class="py-2">Сливки 20%</td><td class="py-2 text-right font-semibold text-emerald-600">205</td></tr>
-                        <tr class="product-row"><td class="py-2">Сметана 10%</td><td class="py-2 text-right font-semibold text-emerald-600">116</td></tr>
-                        <tr class="product-row"><td class="py-2">Сметана 20%</td><td class="py-2 text-right font-semibold text-emerald-600">206</td></tr>
-                        <tr class="product-row"><td class="py-2">Сырки и масса творожные особые</td><td class="py-2 text-right font-semibold text-emerald-600">340</td></tr>
-                        <tr class="product-row"><td class="py-2">Сыр российский</td><td class="py-2 text-right font-semibold text-emerald-600">371</td></tr>
-                        <tr class="product-row"><td class="py-2">Сыр голландский</td><td class="py-2 text-right font-semibold text-emerald-600">361</td></tr>
-                        <tr class="product-row"><td class="py-2">Сыр швейцарский</td><td class="py-2 text-right font-semibold text-emerald-600">396</td></tr>
-                        <tr class="product-row"><td class="py-2">Сыр плавленный</td><td class="py-2 text-right font-semibold text-emerald-600">226</td></tr>
-                        <tr class="product-row"><td class="py-2">Творог жирный</td><td class="py-2 text-right font-semibold text-emerald-600">226</td></tr>
-                        <tr class="product-row"><td class="py-2">Творог полужирный</td><td class="py-2 text-right font-semibold text-emerald-600">156</td></tr>
-                        <tr class="product-row"><td class="py-2">Творог нежирный</td><td class="py-2 text-right font-semibold text-emerald-600">86</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🍏 Фрукти та ягоди</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Абрикоси</td><td>46</td><td>0.9</td></tr>
+<tr><td>Айва</td><td>38</td><td>1.0</td></tr>
+<tr><td>Алича</td><td>34</td><td>0.7</td></tr>
+<tr><td>Ананас</td><td>48</td><td>1.0</td></tr>
+<tr><td>Банани</td><td>91</td><td>1.7</td></tr>
+<tr><td>Вишня</td><td>49</td><td>0.9</td></tr>
+<tr><td>Гранат</td><td>52</td><td>1.1</td></tr>
+<tr><td>Груша</td><td>42</td><td>0.9</td></tr>
+<tr><td>Інжир</td><td>56</td><td>1.2</td></tr>
+<tr><td>Кизил</td><td>45</td><td>0.8</td></tr>
+<tr><td>Персики</td><td>44</td><td>0.8</td></tr>
+<tr><td>Горобина садова</td><td>58</td><td>1.2</td></tr>
+<tr><td>Горобина чорноплідна</td><td>54</td><td>1.1</td></tr>
+<tr><td>Слива садова</td><td>43</td><td>0.8</td></tr>
+<tr><td>Фініки</td><td>281</td><td>5.8</td></tr>
+<tr><td>Хурма</td><td>62</td><td>1.3</td></tr>
+<tr><td>Черешня</td><td>52</td><td>1.0</td></tr>
+<tr><td>Шовковиця</td><td>53</td><td>1.1</td></tr>
+<tr><td>Яблука</td><td>46</td><td>0.8</td></tr>
+<tr><td>Апельсин</td><td>38</td><td>0.7</td></tr>
+<tr><td>Грейпфрут</td><td>35</td><td>0.6</td></tr>
+<tr><td>Лимон</td><td>31</td><td>0.3</td></tr>
+<tr><td>Мандарин</td><td>38</td><td>0.7</td></tr>
+<tr><td>Брусниця</td><td>40</td><td>0.6</td></tr>
+<tr><td>Виноград</td><td>69</td><td>1.3</td></tr>
+<tr><td>Лохина</td><td>37</td><td>0.6</td></tr>
+<tr><td>Ожина</td><td>33</td><td>0.4</td></tr>
+<tr><td>Суниці</td><td>41</td><td>0.6</td></tr>
+<tr><td>Журавлина</td><td>28</td><td>0.4</td></tr>
+<tr><td>Аґрус</td><td>44</td><td>0.7</td></tr>
+<tr><td>Малина</td><td>41</td><td>0.5</td></tr>
+<tr><td>Морошка</td><td>31</td><td>0.3</td></tr>
+<tr><td>Обліпиха</td><td>30</td><td>0.4</td></tr>
+<tr><td>Смородина біла</td><td>39</td><td>0.6</td></tr>
+<tr><td>Смородина червона</td><td>38</td><td>0.6</td></tr>
+<tr><td>Смородина чорна</td><td>40</td><td>0.6</td></tr>
+<tr><td>Чорниця</td><td>40</td><td>0.6</td></tr>
+<tr><td>Шипшина свіжа</td><td>101</td><td>2.0</td></tr>
+<tr><td>Шипшина сушена</td><td>253</td><td>5.0</td></tr>
+</table>
 
-        <!-- ФРУКТЫ И ЯГОДЫ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🍏 Фрукти та ягоди</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Абрикосы</td><td class="py-2 text-right font-semibold text-emerald-600">46</td></tr>
-                        <tr class="product-row"><td class="py-2">Айва</td><td class="py-2 text-right font-semibold text-emerald-600">38</td></tr>
-                        <tr class="product-row"><td class="py-2">Алыча</td><td class="py-2 text-right font-semibold text-emerald-600">34</td></tr>
-                        <tr class="product-row"><td class="py-2">Ананас</td><td class="py-2 text-right font-semibold text-emerald-600">48</td></tr>
-                        <tr class="product-row"><td class="py-2">Бананы</td><td class="py-2 text-right font-semibold text-emerald-600">91</td></tr>
-                        <tr class="product-row"><td class="py-2">Вишня</td><td class="py-2 text-right font-semibold text-emerald-600">49</td></tr>
-                        <tr class="product-row"><td class="py-2">Гранат</td><td class="py-2 text-right font-semibold text-emerald-600">52</td></tr>
-                        <tr class="product-row"><td class="py-2">Груша</td><td class="py-2 text-right font-semibold text-emerald-600">42</td></tr>
-                        <tr class="product-row"><td class="py-2">Инжир</td><td class="py-2 text-right font-semibold text-emerald-600">56</td></tr>
-                        <tr class="product-row"><td class="py-2">Кизил</td><td class="py-2 text-right font-semibold text-emerald-600">45</td></tr>
-                        <tr class="product-row"><td class="py-2">Персики</td><td class="py-2 text-right font-semibold text-emerald-600">44</td></tr>
-                        <tr class="product-row"><td class="py-2">Рябина садовая</td><td class="py-2 text-right font-semibold text-emerald-600">58</td></tr>
-                        <tr class="product-row"><td class="py-2">Рябина черноплодная</td><td class="py-2 text-right font-semibold text-emerald-600">54</td></tr>
-                        <tr class="product-row"><td class="py-2">Слива садовая</td><td class="py-2 text-right font-semibold text-emerald-600">43</td></tr>
-                        <tr class="product-row"><td class="py-2">Финики</td><td class="py-2 text-right font-semibold text-emerald-600">281</td></tr>
-                        <tr class="product-row"><td class="py-2">Хурма</td><td class="py-2 text-right font-semibold text-emerald-600">62</td></tr>
-                        <tr class="product-row"><td class="py-2">Черешня</td><td class="py-2 text-right font-semibold text-emerald-600">52</td></tr>
-                        <tr class="product-row"><td class="py-2">Шелковица</td><td class="py-2 text-right font-semibold text-emerald-600">53</td></tr>
-                        <tr class="product-row"><td class="py-2">Яблоки</td><td class="py-2 text-right font-semibold text-emerald-600">46</td></tr>
-                        <tr class="product-row"><td class="py-2">Апельсин</td><td class="py-2 text-right font-semibold text-emerald-600">38</td></tr>
-                        <tr class="product-row"><td class="py-2">Грейпфрут</td><td class="py-2 text-right font-semibold text-emerald-600">35</td></tr>
-                        <tr class="product-row"><td class="py-2">Лимон</td><td class="py-2 text-right font-semibold text-emerald-600">31</td></tr>
-                        <tr class="product-row"><td class="py-2">Мандарин</td><td class="py-2 text-right font-semibold text-emerald-600">38</td></tr>
-                        <tr class="product-row"><td class="py-2">Брусника</td><td class="py-2 text-right font-semibold text-emerald-600">40</td></tr>
-                        <tr class="product-row"><td class="py-2">Виноград</td><td class="py-2 text-right font-semibold text-emerald-600">69</td></tr>
-                        <tr class="product-row"><td class="py-2">Голубика</td><td class="py-2 text-right font-semibold text-emerald-600">37</td></tr>
-                        <tr class="product-row"><td class="py-2">Ежевика</td><td class="py-2 text-right font-semibold text-emerald-600">33</td></tr>
-                        <tr class="product-row"><td class="py-2">Земляника</td><td class="py-2 text-right font-semibold text-emerald-600">41</td></tr>
-                        <tr class="product-row"><td class="py-2">Клюква</td><td class="py-2 text-right font-semibold text-emerald-600">28</td></tr>
-                        <tr class="product-row"><td class="py-2">Крыжовник</td><td class="py-2 text-right font-semibold text-emerald-600">44</td></tr>
-                        <tr class="product-row"><td class="py-2">Малина</td><td class="py-2 text-right font-semibold text-emerald-600">41</td></tr>
-                        <tr class="product-row"><td class="py-2">Морошка</td><td class="py-2 text-right font-semibold text-emerald-600">31</td></tr>
-                        <tr class="product-row"><td class="py-2">Облепиха</td><td class="py-2 text-right font-semibold text-emerald-600">30</td></tr>
-                        <tr class="product-row"><td class="py-2">Смородина белая</td><td class="py-2 text-right font-semibold text-emerald-600">39</td></tr>
-                        <tr class="product-row"><td class="py-2">Смородина красная</td><td class="py-2 text-right font-semibold text-emerald-600">38</td></tr>
-                        <tr class="product-row"><td class="py-2">Смородина чёрная</td><td class="py-2 text-right font-semibold text-emerald-600">40</td></tr>
-                        <tr class="product-row"><td class="py-2">Черника</td><td class="py-2 text-right font-semibold text-emerald-600">40</td></tr>
-                        <tr class="product-row"><td class="py-2">Шиповник свежий</td><td class="py-2 text-right font-semibold text-emerald-600">101</td></tr>
-                        <tr class="product-row"><td class="py-2">Шиповник сушеный</td><td class="py-2 text-right font-semibold text-emerald-600">253</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🥕 Овочі</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Баклажани</td><td>24</td><td>0.4</td></tr>
+<tr><td>Брюква</td><td>37</td><td>0.6</td></tr>
+<tr><td>Горошок зелений</td><td>72</td><td>1.1</td></tr>
+<tr><td>Кабачки</td><td>27</td><td>0.4</td></tr>
+<tr><td>Капуста білокачанна</td><td>28</td><td>0.4</td></tr>
+<tr><td>Капуста червонокачанна</td><td>31</td><td>0.4</td></tr>
+<tr><td>Капуста цвітна</td><td>29</td><td>0.3</td></tr>
+<tr><td>Картопля</td><td>83</td><td>1.4</td></tr>
+<tr><td>Цибуля зелена (перо)</td><td>22</td><td>0.3</td></tr>
+<tr><td>Цибуля порей</td><td>40</td><td>0.5</td></tr>
+<tr><td>Цибуля ріпчаста</td><td>43</td><td>0.7</td></tr>
+<tr><td>Морква червона</td><td>33</td><td>0.5</td></tr>
+<tr><td>Огірки ґрунтові</td><td>15</td><td>0.2</td></tr>
+<tr><td>Огірки парникові</td><td>10</td><td>0.1</td></tr>
+<tr><td>Перець зелений солодкий</td><td>23</td><td>0.3</td></tr>
+<tr><td>Перець червоний солодкий</td><td>27</td><td>0.4</td></tr>
+<tr><td>Петрушка (зелень)</td><td>45</td><td>0.6</td></tr>
+<tr><td>Петрушка (корінь)</td><td>47</td><td>0.8</td></tr>
+<tr><td>Ревінь (черешковий)</td><td>16</td><td>0.2</td></tr>
+<tr><td>Редис</td><td>20</td><td>0.3</td></tr>
+<tr><td>Редька</td><td>34</td><td>0.5</td></tr>
+<tr><td>Ріпа</td><td>28</td><td>0.4</td></tr>
+<tr><td>Салат</td><td>14</td><td>0.2</td></tr>
+<tr><td>Буряк</td><td>48</td><td>0.8</td></tr>
+<tr><td>Томати (ґрунтові)</td><td>19</td><td>0.3</td></tr>
+<tr><td>Томати (парникові)</td><td>14</td><td>0.2</td></tr>
+<tr><td>Зелена квасоля (стручок)</td><td>32</td><td>0.5</td></tr>
+<tr><td>Хрін</td><td>71</td><td>1.1</td></tr>
+<tr><td>Черемша</td><td>34</td><td>0.5</td></tr>
+<tr><td>Часник</td><td>106</td><td>1.8</td></tr>
+<tr><td>Шпинат</td><td>21</td><td>0.3</td></tr>
+<tr><td>Щавель</td><td>28</td><td>0.4</td></tr>
+</table>
 
-        <!-- ОВОЩИ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🥕 Овочі</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Баклажаны</td><td class="py-2 text-right font-semibold text-emerald-600">24</td></tr>
-                        <tr class="product-row"><td class="py-2">Брюква</td><td class="py-2 text-right font-semibold text-emerald-600">37</td></tr>
-                        <tr class="product-row"><td class="py-2">Горошек зеленый</td><td class="py-2 text-right font-semibold text-emerald-600">72</td></tr>
-                        <tr class="product-row"><td class="py-2">Кабачки</td><td class="py-2 text-right font-semibold text-emerald-600">27</td></tr>
-                        <tr class="product-row"><td class="py-2">Капуста белокочанная</td><td class="py-2 text-right font-semibold text-emerald-600">28</td></tr>
-                        <tr class="product-row"><td class="py-2">Капуста краснокочанная</td><td class="py-2 text-right font-semibold text-emerald-600">31</td></tr>
-                        <tr class="product-row"><td class="py-2">Капуста цветная</td><td class="py-2 text-right font-semibold text-emerald-600">29</td></tr>
-                        <tr class="product-row"><td class="py-2">Картофель</td><td class="py-2 text-right font-semibold text-emerald-600">83</td></tr>
-                        <tr class="product-row"><td class="py-2">Лук зеленый (перо)</td><td class="py-2 text-right font-semibold text-emerald-600">22</td></tr>
-                        <tr class="product-row"><td class="py-2">Лук порей</td><td class="py-2 text-right font-semibold text-emerald-600">40</td></tr>
-                        <tr class="product-row"><td class="py-2">Лук репчатый</td><td class="py-2 text-right font-semibold text-emerald-600">43</td></tr>
-                        <tr class="product-row"><td class="py-2">Морковь красная</td><td class="py-2 text-right font-semibold text-emerald-600">33</td></tr>
-                        <tr class="product-row"><td class="py-2">Огурцы грунтовые</td><td class="py-2 text-right font-semibold text-emerald-600">15</td></tr>
-                        <tr class="product-row"><td class="py-2">Огурцы парниковые</td><td class="py-2 text-right font-semibold text-emerald-600">10</td></tr>
-                        <tr class="product-row"><td class="py-2">Перец зелёный сладкий</td><td class="py-2 text-right font-semibold text-emerald-600">23</td></tr>
-                        <tr class="product-row"><td class="py-2">Перец красный сладкий</td><td class="py-2 text-right font-semibold text-emerald-600">27</td></tr>
-                        <tr class="product-row"><td class="py-2">Петрушка (зелень)</td><td class="py-2 text-right font-semibold text-emerald-600">45</td></tr>
-                        <tr class="product-row"><td class="py-2">Петрушка (корень)</td><td class="py-2 text-right font-semibold text-emerald-600">47</td></tr>
-                        <tr class="product-row"><td class="py-2">Ревень (черешковый)</td><td class="py-2 text-right font-semibold text-emerald-600">16</td></tr>
-                        <tr class="product-row"><td class="py-2">Редис</td><td class="py-2 text-right font-semibold text-emerald-600">20</td></tr>
-                        <tr class="product-row"><td class="py-2">Редька</td><td class="py-2 text-right font-semibold text-emerald-600">34</td></tr>
-                        <tr class="product-row"><td class="py-2">Репа</td><td class="py-2 text-right font-semibold text-emerald-600">28</td></tr>
-                        <tr class="product-row"><td class="py-2">Салат</td><td class="py-2 text-right font-semibold text-emerald-600">14</td></tr>
-                        <tr class="product-row"><td class="py-2">Свекла</td><td class="py-2 text-right font-semibold text-emerald-600">48</td></tr>
-                        <tr class="product-row"><td class="py-2">Томаты (грунтовые)</td><td class="py-2 text-right font-semibold text-emerald-600">19</td></tr>
-                        <tr class="product-row"><td class="py-2">Томаты (парниковые)</td><td class="py-2 text-right font-semibold text-emerald-600">14</td></tr>
-                        <tr class="product-row"><td class="py-2">Зелёная фасоль (стручок)</td><td class="py-2 text-right font-semibold text-emerald-600">32</td></tr>
-                        <tr class="product-row"><td class="py-2">Хрен</td><td class="py-2 text-right font-semibold text-emerald-600">71</td></tr>
-                        <tr class="product-row"><td class="py-2">Черемша</td><td class="py-2 text-right font-semibold text-emerald-600">34</td></tr>
-                        <tr class="product-row"><td class="py-2">Чеснок</td><td class="py-2 text-right font-semibold text-emerald-600">106</td></tr>
-                        <tr class="product-row"><td class="py-2">Шпинат</td><td class="py-2 text-right font-semibold text-emerald-600">21</td></tr>
-                        <tr class="product-row"><td class="py-2">Щавель</td><td class="py-2 text-right font-semibold text-emerald-600">28</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🥓 Ковбаси та м'ясні вироби</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Варена ковбаса Докторська</td><td>260</td><td>0.1</td></tr>
+<tr><td>Варена ковбаса Аматорська</td><td>301</td><td>0.1</td></tr>
+<tr><td>Варена ковбаса Молочна</td><td>252</td><td>0.1</td></tr>
+<tr><td>Варена ковбаса Теляча</td><td>316</td><td>0.1</td></tr>
+<tr><td>Сардельки Свинячі</td><td>332</td><td>0.1</td></tr>
+<tr><td>Сосиски Молочні</td><td>277</td><td>0.1</td></tr>
+<tr><td>Сосиски Російські</td><td>220</td><td>0.1</td></tr>
+<tr><td>Сосиски Свинячі</td><td>324</td><td>0.1</td></tr>
+<tr><td>Варено-копчена Аматорська</td><td>420</td><td>0.1</td></tr>
+<tr><td>Варено-копчений Сервелат</td><td>360</td><td>0.1</td></tr>
+<tr><td>Напівкопчена Краківська</td><td>466</td><td>0.1</td></tr>
+<tr><td>Напівкопчена Мінська</td><td>259</td><td>0.1</td></tr>
+<tr><td>Напівкопчена Полтавська</td><td>417</td><td>0.1</td></tr>
+<tr><td>Напівкопчена Українська</td><td>376</td><td>0.1</td></tr>
+<tr><td>Сирокопчена Аматорська</td><td>514</td><td>0.1</td></tr>
+<tr><td>Сирокопчена Московська</td><td>473</td><td>0.1</td></tr>
+</table>
 
-        <!-- КОЛБАСЫ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🥓 Ковбаси та м'ясні вироби</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Вареная колбаса Докторская</td><td class="py-2 text-right font-semibold text-emerald-600">260</td></tr>
-                        <tr class="product-row"><td class="py-2">Вареная колбаса Любительская</td><td class="py-2 text-right font-semibold text-emerald-600">301</td></tr>
-                        <tr class="product-row"><td class="py-2">Вареная колбаса Молочная</td><td class="py-2 text-right font-semibold text-emerald-600">252</td></tr>
-                        <tr class="product-row"><td class="py-2">Вареная колбаса Телячья</td><td class="py-2 text-right font-semibold text-emerald-600">316</td></tr>
-                        <tr class="product-row"><td class="py-2">Сардельки Свиные</td><td class="py-2 text-right font-semibold text-emerald-600">332</td></tr>
-                        <tr class="product-row"><td class="py-2">Сосиски Молочные</td><td class="py-2 text-right font-semibold text-emerald-600">277</td></tr>
-                        <tr class="product-row"><td class="py-2">Сосиски Русские</td><td class="py-2 text-right font-semibold text-emerald-600">220</td></tr>
-                        <tr class="product-row"><td class="py-2">Сосиски Свиные</td><td class="py-2 text-right font-semibold text-emerald-600">324</td></tr>
-                        <tr class="product-row"><td class="py-2">Варено-копченая Любительская</td><td class="py-2 text-right font-semibold text-emerald-600">420</td></tr>
-                        <tr class="product-row"><td class="py-2">Варено-копченая Сервелат</td><td class="py-2 text-right font-semibold text-emerald-600">360</td></tr>
-                        <tr class="product-row"><td class="py-2">Полукопченая Краковская</td><td class="py-2 text-right font-semibold text-emerald-600">466</td></tr>
-                        <tr class="product-row"><td class="py-2">Полукопченая Минская</td><td class="py-2 text-right font-semibold text-emerald-600">259</td></tr>
-                        <tr class="product-row"><td class="py-2">Полукопченая Полтавская</td><td class="py-2 text-right font-semibold text-emerald-600">417</td></tr>
-                        <tr class="product-row"><td class="py-2">Полукопченая Украинская</td><td class="py-2 text-right font-semibold text-emerald-600">376</td></tr>
-                        <tr class="product-row"><td class="py-2">Сырокопченая Любительская</td><td class="py-2 text-right font-semibold text-emerald-600">514</td></tr>
-                        <tr class="product-row"><td class="py-2">Сырокопченая Московская</td><td class="py-2 text-right font-semibold text-emerald-600">473</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🐟 Риба та морепродукти</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Бички</td><td>145</td><td>0.0</td></tr>
+<tr><td>Горбуша</td><td>147</td><td>0.0</td></tr>
+<tr><td>Кальмар</td><td>75</td><td>0.1</td></tr>
+<tr><td>Камбала</td><td>88</td><td>0.0</td></tr>
+<tr><td>Карась</td><td>87</td><td>0.0</td></tr>
+<tr><td>Короп</td><td>96</td><td>0.0</td></tr>
+<tr><td>Кета</td><td>138</td><td>0.0</td></tr>
+<tr><td>Корюшка</td><td>91</td><td>0.0</td></tr>
+<tr><td>Краб</td><td>69</td><td>0.0</td></tr>
+<tr><td>Креветка</td><td>83</td><td>0.1</td></tr>
+<tr><td>Креветка далекосхідна</td><td>134</td><td>0.1</td></tr>
+<tr><td>Крижана риба</td><td>75</td><td>0.0</td></tr>
+<tr><td>Лящ</td><td>105</td><td>0.0</td></tr>
+<tr><td>Сьомга</td><td>219</td><td>0.0</td></tr>
+<tr><td>Мінога</td><td>166</td><td>0.0</td></tr>
+<tr><td>Минтай</td><td>70</td><td>0.0</td></tr>
+<tr><td>Мойва</td><td>157</td><td>0.0</td></tr>
+<tr><td>Морська капуста</td><td>5</td><td>0.1</td></tr>
+<tr><td>Навага</td><td>73</td><td>0.0</td></tr>
+<tr><td>Минь</td><td>81</td><td>0.0</td></tr>
+<tr><td>Окунь морський</td><td>117</td><td>0.0</td></tr>
+<tr><td>Окунь річковий</td><td>82</td><td>0.0</td></tr>
+<tr><td>Осетер</td><td>164</td><td>0.0</td></tr>
+<tr><td>Палтус</td><td>103</td><td>0.0</td></tr>
+<tr><td>Печінка тріски</td><td>613</td><td>0.1</td></tr>
+<tr><td>Путасу</td><td>72</td><td>0.0</td></tr>
+<tr><td>Риба-шабля</td><td>110</td><td>0.0</td></tr>
+<tr><td>Сазан</td><td>121</td><td>0.0</td></tr>
+<tr><td>Сайра велика</td><td>262</td><td>0.0</td></tr>
+<tr><td>Сайра дрібна</td><td>143</td><td>0.0</td></tr>
+<tr><td>Салака</td><td>121</td><td>0.0</td></tr>
+<tr><td>Оселедець</td><td>242</td><td>0.0</td></tr>
+<tr><td>Сиг</td><td>144</td><td>0.0</td></tr>
+<tr><td>Скумбрія</td><td>153</td><td>0.0</td></tr>
+<tr><td>Сом</td><td>144</td><td>0.0</td></tr>
+<tr><td>Ставрида</td><td>119</td><td>0.0</td></tr>
+<tr><td>Стерлядь</td><td>320</td><td>0.0</td></tr>
+<tr><td>Судак</td><td>83</td><td>0.0</td></tr>
+<tr><td>Трепанг</td><td>35</td><td>0.1</td></tr>
+<tr><td>Тріска</td><td>75</td><td>0.0</td></tr>
+<tr><td>Тунець</td><td>96</td><td>0.0</td></tr>
+<tr><td>Вугільна риба</td><td>158</td><td>0.0</td></tr>
+<tr><td>Вугор морський</td><td>94</td><td>0.0</td></tr>
+<tr><td>Вугор</td><td>333</td><td>0.0</td></tr>
+<tr><td>Хек</td><td>86</td><td>0.0</td></tr>
+<tr><td>Щука</td><td>82</td><td>0.0</td></tr>
+<tr><td>Язь</td><td>117</td><td>0.0</td></tr>
+</table>
 
-        <!-- РЫБА И МОРЕПРОДУКТЫ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🐟 Риба та морепродукти</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Бычки</td><td class="py-2 text-right font-semibold text-emerald-600">145</td></tr>
-                        <tr class="product-row"><td class="py-2">Горбуша</td><td class="py-2 text-right font-semibold text-emerald-600">147</td></tr>
-                        <tr class="product-row"><td class="py-2">Кальмар</td><td class="py-2 text-right font-semibold text-emerald-600">75</td></tr>
-                        <tr class="product-row"><td class="py-2">Камбала</td><td class="py-2 text-right font-semibold text-emerald-600">88</td></tr>
-                        <tr class="product-row"><td class="py-2">Карась</td><td class="py-2 text-right font-semibold text-emerald-600">87</td></tr>
-                        <tr class="product-row"><td class="py-2">Карп</td><td class="py-2 text-right font-semibold text-emerald-600">96</td></tr>
-                        <tr class="product-row"><td class="py-2">Кета</td><td class="py-2 text-right font-semibold text-emerald-600">138</td></tr>
-                        <tr class="product-row"><td class="py-2">Корюшка</td><td class="py-2 text-right font-semibold text-emerald-600">91</td></tr>
-                        <tr class="product-row"><td class="py-2">Краб</td><td class="py-2 text-right font-semibold text-emerald-600">69</td></tr>
-                        <tr class="product-row"><td class="py-2">Креветка</td><td class="py-2 text-right font-semibold text-emerald-600">83</td></tr>
-                        <tr class="product-row"><td class="py-2">Креветка дальневосточная</td><td class="py-2 text-right font-semibold text-emerald-600">134</td></tr>
-                        <tr class="product-row"><td class="py-2">Ледяная</td><td class="py-2 text-right font-semibold text-emerald-600">75</td></tr>
-                        <tr class="product-row"><td class="py-2">Лещ</td><td class="py-2 text-right font-semibold text-emerald-600">105</td></tr>
-                        <tr class="product-row"><td class="py-2">Семга</td><td class="py-2 text-right font-semibold text-emerald-600">219</td></tr>
-                        <tr class="product-row"><td class="py-2">Минога</td><td class="py-2 text-right font-semibold text-emerald-600">166</td></tr>
-                        <tr class="product-row"><td class="py-2">Минтай</td><td class="py-2 text-right font-semibold text-emerald-600">70</td></tr>
-                        <tr class="product-row"><td class="py-2">Мойва</td><td class="py-2 text-right font-semibold text-emerald-600">157</td></tr>
-                        <tr class="product-row"><td class="py-2">Морская капуста</td><td class="py-2 text-right font-semibold text-emerald-600">5</td></tr>
-                        <tr class="product-row"><td class="py-2">Навага</td><td class="py-2 text-right font-semibold text-emerald-600">73</td></tr>
-                        <tr class="product-row"><td class="py-2">Налим</td><td class="py-2 text-right font-semibold text-emerald-600">81</td></tr>
-                        <tr class="product-row"><td class="py-2">Окунь морской</td><td class="py-2 text-right font-semibold text-emerald-600">117</td></tr>
-                        <tr class="product-row"><td class="py-2">Окунь речной</td><td class="py-2 text-right font-semibold text-emerald-600">82</td></tr>
-                        <tr class="product-row"><td class="py-2">Осётр</td><td class="py-2 text-right font-semibold text-emerald-600">164</td></tr>
-                        <tr class="product-row"><td class="py-2">Палтус</td><td class="py-2 text-right font-semibold text-emerald-600">103</td></tr>
-                        <tr class="product-row"><td class="py-2">Печень трески</td><td class="py-2 text-right font-semibold text-emerald-600">613</td></tr>
-                        <tr class="product-row"><td class="py-2">Путассу</td><td class="py-2 text-right font-semibold text-emerald-600">72</td></tr>
-                        <tr class="product-row"><td class="py-2">Рыба-сабля</td><td class="py-2 text-right font-semibold text-emerald-600">110</td></tr>
-                        <tr class="product-row"><td class="py-2">Сазан</td><td class="py-2 text-right font-semibold text-emerald-600">121</td></tr>
-                        <tr class="product-row"><td class="py-2">Сайра крупная</td><td class="py-2 text-right font-semibold text-emerald-600">262</td></tr>
-                        <tr class="product-row"><td class="py-2">Сайра мелкая</td><td class="py-2 text-right font-semibold text-emerald-600">143</td></tr>
-                        <tr class="product-row"><td class="py-2">Салака</td><td class="py-2 text-right font-semibold text-emerald-600">121</td></tr>
-                        <tr class="product-row"><td class="py-2">Сельдь</td><td class="py-2 text-right font-semibold text-emerald-600">242</td></tr>
-                        <tr class="product-row"><td class="py-2">Сиг</td><td class="py-2 text-right font-semibold text-emerald-600">144</td></tr>
-                        <tr class="product-row"><td class="py-2">Скумбрия</td><td class="py-2 text-right font-semibold text-emerald-600">153</td></tr>
-                        <tr class="product-row"><td class="py-2">Сом</td><td class="py-2 text-right font-semibold text-emerald-600">144</td></tr>
-                        <tr class="product-row"><td class="py-2">Ставрида</td><td class="py-2 text-right font-semibold text-emerald-600">119</td></tr>
-                        <tr class="product-row"><td class="py-2">Стерлядь</td><td class="py-2 text-right font-semibold text-emerald-600">320</td></tr>
-                        <tr class="product-row"><td class="py-2">Судак</td><td class="py-2 text-right font-semibold text-emerald-600">83</td></tr>
-                        <tr class="product-row"><td class="py-2">Трепанг</td><td class="py-2 text-right font-semibold text-emerald-600">35</td></tr>
-                        <tr class="product-row"><td class="py-2">Треска</td><td class="py-2 text-right font-semibold text-emerald-600">75</td></tr>
-                        <tr class="product-row"><td class="py-2">Тунец</td><td class="py-2 text-right font-semibold text-emerald-600">96</td></tr>
-                        <tr class="product-row"><td class="py-2">Угольная рыба</td><td class="py-2 text-right font-semibold text-emerald-600">158</td></tr>
-                        <tr class="product-row"><td class="py-2">Угорь морской</td><td class="py-2 text-right font-semibold text-emerald-600">94</td></tr>
-                        <tr class="product-row"><td class="py-2">Угорь</td><td class="py-2 text-right font-semibold text-emerald-600">333</td></tr>
-                        <tr class="product-row"><td class="py-2">Хек</td><td class="py-2 text-right font-semibold text-emerald-600">86</td></tr>
-                        <tr class="product-row"><td class="py-2">Щука</td><td class="py-2 text-right font-semibold text-emerald-600">82</td></tr>
-                        <tr class="product-row"><td class="py-2">Язь</td><td class="py-2 text-right font-semibold text-emerald-600">117</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h2>🌱 Бобові</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Боби</td><td>58</td><td>0.5</td></tr>
+<tr><td>Горох лущений</td><td>323</td><td>4.3</td></tr>
+<tr><td>Горох цільний</td><td>303</td><td>4.1</td></tr>
+<tr><td>Соя</td><td>395</td><td>1.5</td></tr>
+<tr><td>Квасоля</td><td>309</td><td>3.9</td></tr>
+<tr><td>Сочевиця</td><td>310</td><td>3.9</td></tr>
+</table>
 
-        <!-- БОБОВЫЕ -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🌱 Бобові</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Бобы</td><td class="py-2 text-right font-semibold text-emerald-600">58</td></tr>
-                        <tr class="product-row"><td class="py-2">Горох лущеный</td><td class="py-2 text-right font-semibold text-emerald-600">323</td></tr>
-                        <tr class="product-row"><td class="py-2">Горох цельный</td><td class="py-2 text-right font-semibold text-emerald-600">303</td></tr>
-                        <tr class="product-row"><td class="py-2">Соя</td><td class="py-2 text-right font-semibold text-emerald-600">395</td></tr>
-                        <tr class="product-row"><td class="py-2">Фасоль</td><td class="py-2 text-right font-semibold text-emerald-600">309</td></tr>
-                        <tr class="product-row"><td class="py-2">Чечевица</td><td class="py-2 text-right font-semibold text-emerald-600">310</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- МЯСО И ПТИЦА -->
-        <div class="category-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
-            <h2 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b pb-2 dark:border-slate-700">🥩 М'ясо та птиця</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="text-slate-400 border-b dark:border-slate-700 text-xs uppercase">
-                            <th class="py-2">Найменування</th>
-                            <th class="py-2 text-right">Ккал / 100 г</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
-                        <tr class="product-row"><td class="py-2">Баранина</td><td class="py-2 text-right font-semibold text-emerald-600">203</td></tr>
-                        <tr class="product-row"><td class="py-2">Говядина</td><td class="py-2 text-right font-semibold text-emerald-600">187</td></tr>
-                        <tr class="product-row"><td class="py-2">Конина</td><td class="py-2 text-right font-semibold text-emerald-600">143</td></tr>
-                        <tr class="product-row"><td class="py-2">Кролик</td><td class="py-2 text-right font-semibold text-emerald-600">199</td></tr>
-                        <tr class="product-row"><td class="py-2">Свинина нежирная</td><td class="py-2 text-right font-semibold text-emerald-600">316</td></tr>
-                        <tr class="product-row"><td class="py-2">Свинина жирная</td><td class="py-2 text-right font-semibold text-emerald-600">489</td></tr>
-                        <tr class="product-row"><td class="py-2">Телятина</td><td class="py-2 text-right font-semibold text-emerald-600">90</td></tr>
-                        <tr class="product-row"><td class="py-2">Бараньи Почки</td><td class="py-2 text-right font-semibold text-emerald-600">77</td></tr>
-                        <tr class="product-row"><td class="py-2">Баранья Печень</td><td class="py-2 text-right font-semibold text-emerald-600">101</td></tr>
-                        <tr class="product-row"><td class="py-2">Баранье Сердце</td><td class="py-2 text-right font-semibold text-emerald-600">82</td></tr>
-                        <tr class="product-row"><td class="py-2">Говяжьи Мозги</td><td class="py-2 text-right font-semibold text-emerald-600">124</td></tr>
-                        <tr class="product-row"><td class="py-2">Говяжья Печень</td><td class="py-2 text-right font-semibold text-emerald-600">98</td></tr>
-                        <tr class="product-row"><td class="py-2">Говяжьи Почки</td><td class="py-2 text-right font-semibold text-emerald-600">66</td></tr>
-                        <tr class="product-row"><td class="py-2">Говяжье Вымя</td><td class="py-2 text-right font-semibold text-emerald-600">173</td></tr>
-                        <tr class="product-row"><td class="py-2">Говяжье Сердце</td><td class="py-2 text-right font-semibold text-emerald-600">87</td></tr>
-                        <tr class="product-row"><td class="py-2">Говяжий Язык</td><td class="py-2 text-right font-semibold text-emerald-600">163</td></tr>
-                        <tr class="product-row"><td class="py-2">Почки свинные</td><td class="py-2 text-right font-semibold text-emerald-600">80</td></tr>
-                        <tr class="product-row"><td class="py-2">Печень свинная</td><td class="py-2 text-right font-semibold text-emerald-600">108</td></tr>
-                        <tr class="product-row"><td class="py-2">Сердце свинное</td><td class="py-2 text-right font-semibold text-emerald-600">89</td></tr>
-                        <tr class="product-row"><td class="py-2">Язык свинной</td><td class="py-2 text-right font-semibold text-emerald-600">208</td></tr>
-                        <tr class="product-row"><td class="py-2">Гуси</td><td class="py-2 text-right font-semibold text-emerald-600">364</td></tr>
-                        <tr class="product-row"><td class="py-2">Индейка</td><td class="py-2 text-right font-semibold text-emerald-600">197</td></tr>
-                        <tr class="product-row"><td class="py-2">Куры</td><td class="py-2 text-right font-semibold text-emerald-600">165</td></tr>
-                        <tr class="product-row"><td class="py-2">Цыплята</td><td class="py-2 text-right font-semibold text-emerald-600">156</td></tr>
-                        <tr class="product-row"><td class="py-2">Утки</td><td class="py-2 text-right font-semibold text-emerald-600">346</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Подвал -->
-    <footer class="max-w-4xl mx-auto p-4 text-center text-xs text-slate-500 dark:text-slate-400 mt-8 border-t dark:border-slate-800">
-        Джерело даних: <a href="https://calories.chebur.shop" target="_blank" class="text-emerald-600 hover:underline">arcus.ua</a>
-    </footer>
+<h2>🥩 М'ясо та птиця</h2>
+<table>
+<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
+<tr><td>Баранина</td><td>203</td><td>0.0</td></tr>
+<tr><td>Яловичина</td><td>187</td><td>0.0</td></tr>
+<tr><td>Конина</td><td>143</td><td>0.0</td></tr>
+<tr><td>Кролик</td><td>199</td><td>0.0</td></tr>
+<tr><td>Свинина нежирна</td><td>316</td><td>0.0</td></tr>
+<tr><td>Свинина жирна</td><td>489</td><td>0.0</td></tr>
+<tr><td>Телятина</td><td>90</td><td>0.0</td></tr>
+<tr><td>Баранячі нирки</td><td>77</td><td>0.0</td></tr>
+<tr><td>Бараняча печінка</td><td>101</td><td>0.1</td></tr>
+<tr><td>Бараняче серце</td><td>82</td><td>0.0</td></tr>
+<tr><td>Яловичі мізки</td><td>124</td><td>0.1</td></tr>
+<tr><td>Яловича печінка</td><td>98</td><td>0.3</td></tr>
+<tr><td>Яловичі нирки</td><td>66</td><td>0.0</td></tr>
+<tr><td>Яловичий вимені</td><td>173</td><td>0.0</td></tr>
+<tr><td>Яловиче серце</td><td>87</td><td>0.0</td></tr>
+<tr><td>Яловичий язик</td><td>163</td><td>0.1</td></tr>
+<tr><td>Нирки свинячі</td><td>80</td><td>0.0</td></tr>
+<tr><td>Печінка свиняча</td><td>108</td><td>0.2</td></tr>
+<tr><td>Серце свиняче</td><td>89</td><td>0.0</td></tr>
+<tr><td>Язик свинячий</td><td>208</td><td>0.1</td></tr>
+<tr><td>Гуси</td><td>364</td><td>0.0</td></tr>
+<tr><td>Індичка</td><td>197</td><td>0.0</td></tr>
+<tr><td>Кури</td><td>165</td><td>0.0</td></tr>
+<tr><td>Курчата</td><td>156</td><td>0.0</td></tr>
+<tr><td>Качки</td><td>346</td><td>0.0</td></tr>
+</table>
 
 </body>
 </html>
