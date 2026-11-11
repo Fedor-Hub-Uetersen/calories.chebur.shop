@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" id="html-root">
 <head>
 <meta charset="UTF-8">
-<title>Виправлена таблиця калорійності та ХО</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Таблиця калорійності та ХО / Calorie & Bread Unit Table</title>
 <style>
   body { font-family: Arial, sans-serif; margin: 20px; color: #333; }
-  header { background: #f8f9fa; padding: 10px 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #eee; }
+  header { 
+    background: #f8f9fa; 
+    padding: 12px 18px; 
+    border-radius: 8px; 
+    margin-bottom: 20px; 
+    border: 1px solid #eee; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+  }
   header a { color: #2c3e50; text-decoration: none; font-weight: bold; }
   header a:hover { text-decoration: underline; color: #3498db; }
+  .lang-switcher { display: flex; gap: 6px; }
+  .lang-btn { 
+    padding: 6px 12px; 
+    border: 1px solid #cbd5e1; 
+    background: #fff; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 13px; 
+    transition: all 0.2s; 
+  }
+  .lang-btn:hover { background: #f1f5f9; }
+  .lang-btn.active { 
+    background: #047857; 
+    color: #fff; 
+    border-color: #047857; 
+  }
   h2 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 30px; }
   table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
   th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
@@ -18,208 +47,295 @@
 <body>
 
 <header>
-  🌐 Офіційний сайт проєкту: <a href="https://dia-küchevonfedor.de" target="_blank">Dia-Küche von Fedor</a>
+  <div>
+    🌐 <span data-uk="Офіційний сайт проєкту:" data-en="Official Project Website:">Офіційний сайт проєкту:</span> 
+    <a href="https://dia-küchevonfedor.de" target="_blank">Dia-Küche von Fedor</a>
+  </div>
+  <div class="lang-switcher">
+    <button type="button" class="lang-btn active" id="btn-uk" onclick="switchLanguage('uk')">🇺🇦 UA</button>
+    <button type="button" class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇬🇧 EN</button>
+  </div>
 </header>
 
-<h1>Таблиця калорійності та хлібних одиниць (ХО) — Виправлена</h1>
-<p><em>Розрахунок ХО виконано виходячи з того, що 1 ХО = 12 г вуглеводів. Значення для каш та гарнірів вказано для готових страв у вареному вигляді.</em></p>
+<h1 data-uk="Таблиця калорійності та хлібних одиниць (ХО) — Виправлена" data-en="Calorie and Bread Unit (BU) Table — Corrected">Таблиця калорійності та хлібних одиниць (ХО) — Виправлена</h1>
+<p><em data-uk="Розрахунок ХО виконано виходячи з того, що 1 ХО = 12 г вуглеводів. Значення для каш та гарнірів вказано для готових страв у вареному вигляді." data-en="Bread Unit (BU) calculation is based on 1 BU = 12g of carbohydrates. Values for porridges and side dishes are specified for cooked/boiled foods.">Розрахунок ХО виконано виходячи з того, що 1 ХО = 12 г вуглеводів. Значення для каш та гарнірів вказано для готових страв у вареному вигляді.</em></p>
 
-<h2>🍲 Готові страви та гарніри</h2>
+<h2 data-uk="🍲 Готові страви та гарніри" data-en="🍲 Cooked Dishes & Side Dishes">🍲 Готові страви та гарніри</h2>
 <table>
-<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
-<tr><td>Битки яловичі</td><td>235</td><td>0.5</td></tr>
-<tr><td>Битки рибні</td><td>133</td><td>0.5</td></tr>
-<tr><td>Млинці з маслом</td><td>235</td><td>1.3</td></tr>
-<tr><td>Млинці з творогом</td><td>195</td><td>1.5</td></tr>
-<tr><td>Борщ зі свіжої капусти (500 г)</td><td>116</td><td>0.4</td></tr>
-<tr><td>Борщ з квашеної капусти (500 г)</td><td>156</td><td>0.5</td></tr>
-<tr><td>Бульйон м'ясний</td><td>20</td><td>0.0</td></tr>
-<tr><td>Бутерброд з ковбасою вареною</td><td>150</td><td>1.0</td></tr>
-<tr><td>Бутерброд з ікрою червоною</td><td>110</td><td>0.9</td></tr>
-<tr><td>Вареники з картоплею</td><td>221</td><td>2.1</td></tr>
-<tr><td>Вареники з творогом</td><td>235</td><td>1.7</td></tr>
-<tr><td>Вареники з творогом та сметаною</td><td>347</td><td>1.7</td></tr>
-<tr><td>Вінегрет</td><td>128</td><td>0.6</td></tr>
-<tr><td>Гуляш яловичий</td><td>180</td><td>0.3</td></tr>
-<tr><td>Гуляш свинячий</td><td>355</td><td>0.3</td></tr>
-<tr><td>Запіканка сирна</td><td>199</td><td>1.0</td></tr>
-<tr><td>Ікра баклажанна</td><td>91</td><td>0.5</td></tr>
-<tr><td>Ікра кабачкова</td><td>90</td><td>0.6</td></tr>
-<tr><td>Картопляні оладки</td><td>190</td><td>1.5</td></tr>
-<tr><td>Картопля відварна з маслом</td><td>126</td><td>1.2</td></tr>
-<tr><td>Картопля відварна зі сметаною</td><td>117</td><td>1.2</td></tr>
-<tr><td>Картопля відварна з соусом</td><td>90</td><td>1.3</td></tr>
-<tr><td>Какао без цукру</td><td>60</td><td>0.5</td></tr>
-<tr><td>Какао на згущеному молоці</td><td>90</td><td>1.2</td></tr>
-<tr><td>Каша гречана (готова)</td><td>105</td><td>1.5</td></tr>
-<tr><td>Каша пшоняна (готова)</td><td>135</td><td>1.4</td></tr>
-<tr><td>Каша рисова (готова)</td><td>115</td><td>1.5</td></tr>
-<tr><td>Каша перлова (готова)</td><td>109</td><td>1.3</td></tr>
-<tr><td>Каша ячна (готова)</td><td>102</td><td>1.3</td></tr>
-<tr><td>Каша пшенична (готова)</td><td>110</td><td>1.4</td></tr>
-<tr><td>Крупа манна на молоці (рідка)</td><td>100</td><td>1.3</td></tr>
-<tr><td>Кисіль зі свіжих ягід</td><td>105</td><td>2.6</td></tr>
-<tr><td>Компот із сухофруктів</td><td>170</td><td>4.2</td></tr>
-<tr><td>Кава розчинна без цукру</td><td>2</td><td>0.0</td></tr>
-<tr><td>Кава чорна з цукром</td><td>10</td><td>0.6</td></tr>
-<tr><td>Кава з молоком без цукру</td><td>40</td><td>0.3</td></tr>
-<tr><td>Кава з вершками без цукру</td><td>59</td><td>0.2</td></tr>
-<tr><td>Кава з молоком і цукром</td><td>77</td><td>0.8</td></tr>
-<tr><td>Кава на згущеному молоці</td><td>67</td><td>1.0</td></tr>
-<tr><td>Кавовий напій</td><td>80</td><td>1.2</td></tr>
-<tr><td>Локшина домашня (готова)</td><td>140</td><td>1.9</td></tr>
-<tr><td>Макарони (готові)</td><td>110</td><td>1.8</td></tr>
-<tr><td>М'ясо тушковане</td><td>175</td><td>0.2</td></tr>
-<tr><td>Напій з сиропу</td><td>141</td><td>3.5</td></tr>
-<tr><td>Окрошка м'ясна</td><td>269</td><td>0.6</td></tr>
-<tr><td>Омлет</td><td>250</td><td>0.3</td></tr>
-<tr><td>Печінка яловича смажена</td><td>200</td><td>0.4</td></tr>
-<tr><td>Печінка по-строгановськи</td><td>260</td><td>0.5</td></tr>
-<tr><td>Плов яловичий</td><td>359</td><td>1.5</td></tr>
-<tr><td>Пюре картопляне з маслом</td><td>141</td><td>1.2</td></tr>
-<tr><td>Пюре моркв'яне</td><td>147</td><td>1.0</td></tr>
-<tr><td>Розсольник</td><td>246</td><td>0.8</td></tr>
-<tr><td>Салат з огірків</td><td>76</td><td>0.2</td></tr>
-<tr><td>Салат з помідорів</td><td>108</td><td>0.3</td></tr>
-<tr><td>Салат з редьки</td><td>128</td><td>0.5</td></tr>
-<tr><td>Салат з редису</td><td>117</td><td>0.3</td></tr>
-<tr><td>Салат з капусти</td><td>83</td><td>0.4</td></tr>
-<tr><td>Салат з квашеної капусти</td><td>69</td><td>0.3</td></tr>
-<tr><td>Салат з буряка</td><td>67</td><td>0.7</td></tr>
-<tr><td>Салат м'ясний</td><td>385</td><td>0.4</td></tr>
-<tr><td>Серце в соусі</td><td>168</td><td>0.4</td></tr>
-<tr><td>Сік яблучний</td><td>44</td><td>1.0</td></tr>
-<tr><td>Сік сливовий</td><td>66</td><td>1.6</td></tr>
-<tr><td>Сік абрикосовий</td><td>55</td><td>1.3</td></tr>
-<tr><td>Сік вишневий</td><td>54</td><td>1.2</td></tr>
-<tr><td>Сік виноградний</td><td>72</td><td>1.7</td></tr>
-<tr><td>Сік апельсиновий</td><td>54</td><td>1.2</td></tr>
-<tr><td>Студень яловичий</td><td>40</td><td>0.1</td></tr>
-<tr><td>Суп картопляний</td><td>233</td><td>0.8</td></tr>
-<tr><td>Суп з макаронами</td><td>247</td><td>0.9</td></tr>
-<tr><td>Суп молочний з макаронами</td><td>390</td><td>1.2</td></tr>
-<tr><td>Суп молочний рисовий</td><td>379</td><td>1.3</td></tr>
-<tr><td>Суп гороховий</td><td>242</td><td>1.1</td></tr>
-<tr><td>Чай без цукру</td><td>2</td><td>0.0</td></tr>
-<tr><td>Чай з цукром</td><td>29</td><td>0.7</td></tr>
-<tr><td>Чай з лимоном і цукром</td><td>30</td><td>0.7</td></tr>
-<tr><td>Чай з молоком і цукром</td><td>44</td><td>0.9</td></tr>
-<tr><td>Чай з вершками та цукром</td><td>71</td><td>0.8</td></tr>
-<tr><td>Шніцель</td><td>168</td><td>0.5</td></tr>
-<tr><td>Щи зі свіжої капусти</td><td>88</td><td>0.3</td></tr>
-<tr><td>Яйця варені (2 шт.)</td><td>126</td><td>0.1</td></tr>
-<tr><td>Яйця смажені (2 шт.)</td><td>201</td><td>0.2</td></tr>
+<thead>
+  <tr>
+    <th data-uk="Найменування" data-en="Item Name">Найменування</th>
+    <th data-uk="Ккал / 100 г" data-en="Kcal / 100 g">Ккал / 100 г</th>
+    <th data-uk="ХО / 100 г" data-en="BU / 100 g">ХО / 100 г</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td data-uk="Битки яловичі" data-en="Beef cutlets">Битки яловичі</td><td>235</td><td>0.5</td></tr>
+  <tr><td data-uk="Битки рибні" data-en="Fish cutlets">Битки рибні</td><td>133</td><td>0.5</td></tr>
+  <tr><td data-uk="Млинці з маслом" data-en="Pancakes with butter">Млинці з маслом</td><td>235</td><td>1.3</td></tr>
+  <tr><td data-uk="Млинці з творогом" data-en="Pancakes with cottage cheese">Млинці з творогом</td><td>195</td><td>1.5</td></tr>
+  <tr><td data-uk="Борщ зі свіжої капусти (500 г)" data-en="Borsch with fresh cabbage (500 g)">Борщ зі свіжої капусти (500 г)</td><td>116</td><td>0.4</td></tr>
+  <tr><td data-uk="Борщ з квашеної капусти (500 г)" data-en="Borsch with sauerkraut (500 g)">Борщ з квашеної капусти (500 г)</td><td>156</td><td>0.5</td></tr>
+  <tr><td data-uk="Бульйон м'ясний" data-en="Meat broth">Бульйон м'ясний</td><td>20</td><td>0.0</td></tr>
+  <tr><td data-uk="Бутерброд з ковбасою вареною" data-en="Sandwich with boiled sausage">Бутерброд з ковбасою вареною</td><td>150</td><td>1.0</td></tr>
+  <tr><td data-uk="Бутерброд з ікрою червоною" data-en="Sandwich with red caviar">Бутерброд з ікрою червоною</td><td>110</td><td>0.9</td></tr>
+  <tr><td data-uk="Вареники з картоплею" data-en="Vareniki (dumplings) with potato">Вареники з картоплею</td><td>221</td><td>2.1</td></tr>
+  <tr><td data-uk="Вареники з творогом" data-en="Vareniki with cottage cheese">Вареники з творогом</td><td>235</td><td>1.7</td></tr>
+  <tr><td data-uk="Вареники з творогом та сметаною" data-en="Vareniki with cottage cheese and sour cream">Вареники з творогом та сметаною</td><td>347</td><td>1.7</td></tr>
+  <tr><td data-uk="Вінегрет" data-en="Vinaigrette salad">Вінегрет</td><td>128</td><td>0.6</td></tr>
+  <tr><td data-uk="Гуляш яловичий" data-en="Beef goulash">Гуляш яловичий</td><td>180</td><td>0.3</td></tr>
+  <tr><td data-uk="Гуляш свинячий" data-en="Pork goulash">Гуляш свинячий</td><td>355</td><td>0.3</td></tr>
+  <tr><td data-uk="Запіканка сирна" data-en="Cottage cheese casserole">Запіканка сирна</td><td>199</td><td>1.0</td></tr>
+  <tr><td data-uk="Ікра баклажанна" data-en="Eggplant caviar">Ікра баклажанна</td><td>91</td><td>0.5</td></tr>
+  <tr><td data-uk="Ікра кабачкова" data-en="Zucchini caviar">Ікра кабачкова</td><td>90</td><td>0.6</td></tr>
+  <tr><td data-uk="Картопляні оладки" data-en="Potato pancakes (draniki)">Картопляні оладки</td><td>190</td><td>1.5</td></tr>
+  <tr><td data-uk="Картопля відварна з маслом" data-en="Boiled potato with butter">Картопля відварна з маслом</td><td>126</td><td>1.2</td></tr>
+  <tr><td data-uk="Картопля відварна зі сметаною" data-en="Boiled potato with sour cream">Картопля відварна зі сметаною</td><td>117</td><td>1.2</td></tr>
+  <tr><td data-uk="Картопля відварна з соусом" data-en="Boiled potato with sauce">Картопля відварна з соусом</td><td>90</td><td>1.3</td></tr>
+  <tr><td data-uk="Какао без цукру" data-en="Cocoa without sugar">Какао без цукру</td><td>60</td><td>0.5</td></tr>
+  <tr><td data-uk="Какао на згущеному молоці" data-en="Cocoa with condensed milk">Какао на згущеному молоці</td><td>90</td><td>1.2</td></tr>
+  <tr><td data-uk="Каша гречана (готова)" data-en="Buckwheat porridge (cooked)">Каша гречана (готова)</td><td>105</td><td>1.5</td></tr>
+  <tr><td data-uk="Каша пшоняна (готова)" data-en="Millet porridge (cooked)">Каша пшоняна (готова)</td><td>135</td><td>1.4</td></tr>
+  <tr><td data-uk="Каша рисова (готова)" data-en="Rice porridge (cooked)">Каша рисова (готова)</td><td>115</td><td>1.5</td></tr>
+  <tr><td data-uk="Каша перлова (готова)" data-en="Pearl barley porridge (cooked)">Каша перлова (готова)</td><td>109</td><td>1.3</td></tr>
+  <tr><td data-uk="Каша ячна (готова)" data-en="Barley grits porridge (cooked)">Каша ячна (готова)</td><td>102</td><td>1.3</td></tr>
+  <tr><td data-uk="Каша пшенична (готова)" data-en="Wheat porridge (cooked)">Каша пшенична (готова)</td><td>110</td><td>1.4</td></tr>
+  <tr><td data-uk="Крупа манна на молоці (рідка)" data-en="Semolina porridge with milk (thin)">Крупа манна на молоці (рідка)</td><td>100</td><td>1.3</td></tr>
+  <tr><td data-uk="Кисіль зі свіжих ягід" data-en="Berry kissel (fresh)">Кисіль зі свіжих ягід</td><td>105</td><td>2.6</td></tr>
+  <tr><td data-uk="Компот із сухофруктів" data-en="Dried fruit compote">Компот із сухофруктів</td><td>170</td><td>4.2</td></tr>
+  <tr><td data-uk="Кава розчинна без цукру" data-en="Instant coffee without sugar">Кава розчинна без цукру</td><td>2</td><td>0.0</td></tr>
+  <tr><td data-uk="Кава чорна з цукром" data-en="Black coffee with sugar">Кава чорна з цукром</td><td>10</td><td>0.6</td></tr>
+  <tr><td data-uk="Кава з молоком без цукру" data-en="Coffee with milk without sugar">Кава з молоком без цукру</td><td>40</td><td>0.3</td></tr>
+  <tr><td data-uk="Кава з вершками без цукру" data-en="Coffee with cream without sugar">Кава з вершками без цукру</td><td>59</td><td>0.2</td></tr>
+  <tr><td data-uk="Кава з молоком і цукром" data-en="Coffee with milk and sugar">Кава з молоком і цукром</td><td>77</td><td>0.8</td></tr>
+  <tr><td data-uk="Кава на згущеному молоці" data-en="Coffee with condensed milk">Кава на згущеному молоці</td><td>67</td><td>1.0</td></tr>
+  <tr><td data-uk="Кавовий напій" data-en="Coffee drink">Кавовий напій</td><td>80</td><td>1.2</td></tr>
+  <tr><td data-uk="Локшина домашня (готова)" data-en="Homemade noodles (cooked)">Локшина домашня (готова)</td><td>140</td><td>1.9</td></tr>
+  <tr><td data-uk="Макарони (готові)" data-en="Pasta (cooked)">Макарони (готові)</td><td>110</td><td>1.8</td></tr>
+  <tr><td data-uk="М'ясо тушковане" data-en="Stewed meat">М'ясо тушковане</td><td>175</td><td>0.2</td></tr>
+  <tr><td data-uk="Напій з сиропу" data-en="Syrup drink">Напій з сиропу</td><td>141</td><td>3.5</td></tr>
+  <tr><td data-uk="Окрошка м'ясна" data-en="Meat okroshka (cold soup)">Окрошка м'ясна</td><td>269</td><td>0.6</td></tr>
+  <tr><td data-uk="Омлет" data-en="Omelette">Омлет</td><td>250</td><td>0.3</td></tr>
+  <tr><td data-uk="Печінка яловича смажена" data-en="Fried beef liver">Печінка яловича смажена</td><td>200</td><td>0.4</td></tr>
+  <tr><td data-uk="Печінка по-строгановськи" data-en="Liver Stroganoff">Печінка по-строгановськи</td><td>260</td><td>0.5</td></tr>
+  <tr><td data-uk="Плов яловичий" data-en="Beef pilaf">Плов яловичий</td><td>359</td><td>1.5</td></tr>
+  <tr><td data-uk="Пюре картопляне з маслом" data-en="Mashed potatoes with butter">Пюре картопляне з маслом</td><td>141</td><td>1.2</td></tr>
+  <tr><td data-uk="Пюре моркв'яне" data-en="Carrot puree">Пюре моркв'яне</td><td>147</td><td>1.0</td></tr>
+  <tr><td data-uk="Розсольник" data-en="Rassolnik soup">Розсольник</td><td>246</td><td>0.8</td></tr>
+  <tr><td data-uk="Салат з огірків" data-en="Cucumber salad">Салат з огірків</td><td>76</td><td>0.2</td></tr>
+  <tr><td data-uk="Салат з помідорів" data-en="Tomato salad">Салат з помідорів</td><td>108</td><td>0.3</td></tr>
+  <tr><td data-uk="Салат з редьки" data-en="Black radish salad">Салат з редьки</td><td>128</td><td>0.5</td></tr>
+  <tr><td data-uk="Салат з редису" data-en="Radish salad">Салат з редису</td><td>117</td><td>0.3</td></tr>
+  <tr><td data-uk="Салат з капусти" data-en="Cabbage salad">Салат з капусти</td><td>83</td><td>0.4</td></tr>
+  <tr><td data-uk="Салат з квашеної капусти" data-en="Sauerkraut salad">Салат з квашеної капусти</td><td>69</td><td>0.3</td></tr>
+  <tr><td data-uk="Салат з буряка" data-en="Beetroot salad">Салат з буряка</td><td>67</td><td>0.7</td></tr>
+  <tr><td data-uk="Салат м'ясний" data-en="Meat salad">Салат м'ясний</td><td>385</td><td>0.4</td></tr>
+  <tr><td data-uk="Серце в соусі" data-en="Beef heart in sauce">Серце в соусі</td><td>168</td><td>0.4</td></tr>
+  <tr><td data-uk="Сік яблучний" data-en="Apple juice">Сік яблучний</td><td>44</td><td>1.0</td></tr>
+  <tr><td data-uk="Сік сливовий" data-en="Plum juice">Сік сливовий</td><td>66</td><td>1.6</td></tr>
+  <tr><td data-uk="Сік абрикосовий" data-en="Apricot juice">Сік абрикосовий</td><td>55</td><td>1.3</td></tr>
+  <tr><td data-uk="Сік вишневий" data-en="Cherry juice">Сік вишневий</td><td>54</td><td>1.2</td></tr>
+  <tr><td data-uk="Сік виноградний" data-en="Grape juice">Сік виноградний</td><td>72</td><td>1.7</td></tr>
+  <tr><td data-uk="Сік апельсиновий" data-en="Orange juice">Сік апельсиновий</td><td>54</td><td>1.2</td></tr>
+  <tr><td data-uk="Студень яловичий" data-en="Beef aspic (kholodets)">Студень яловичий</td><td>40</td><td>0.1</td></tr>
+  <tr><td data-uk="Суп картопляний" data-en="Potato soup">Суп картопляний</td><td>233</td><td>0.8</td></tr>
+  <tr><td data-uk="Суп з макаронами" data-en="Pasta soup">Суп з макаронами</td><td>247</td><td>0.9</td></tr>
+  <tr><td data-uk="Суп молочний з макаронами" data-en="Milk noodle soup">Суп молочний з макаронами</td><td>390</td><td>1.2</td></tr>
+  <tr><td data-uk="Суп молочний рисовий" data-en="Milk rice soup">Суп молочний рисовий</td><td>379</td><td>1.3</td></tr>
+  <tr><td data-uk="Суп гороховий" data-en="Pea soup">Суп гороховий</td><td>242</td><td>1.1</td></tr>
+  <tr><td data-uk="Чай без цукру" data-en="Tea without sugar">Чай без цукру</td><td>2</td><td>0.0</td></tr>
+  <tr><td data-uk="Чай з цукром" data-en="Tea with sugar">Чай з цукром</td><td>29</td><td>0.7</td></tr>
+  <tr><td data-uk="Чай з лимоном і цукром" data-en="Tea with lemon and sugar">Чай з лимоном і цукром</td><td>30</td><td>0.7</td></tr>
+  <tr><td data-uk="Чай з молоком і цукром" data-en="Tea with milk and sugar">Чай з молоком і цукром</td><td>44</td><td>0.9</td></tr>
+  <tr><td data-uk="Чай з вершками та цукром" data-en="Tea with cream and sugar">Чай з вершками та цукром</td><td>71</td><td>0.8</td></tr>
+  <tr><td data-uk="Шніцель" data-en="Schnitzel">Шніцель</td><td>168</td><td>0.5</td></tr>
+  <tr><td data-uk="Щи зі свіжої капусти" data-en="Shchi with fresh cabbage">Щи зі свіжої капусти</td><td>88</td><td>0.3</td></tr>
+  <tr><td data-uk="Яйця варені (2 шт.)" data-en="Boiled eggs (2 pcs)">Яйця варені (2 шт.)</td><td>126</td><td>0.1</td></tr>
+  <tr><td data-uk="Яйця смажені (2 шт.)" data-en="Fried eggs (2 pcs)">Яйця смажені (2 шт.)</td><td>201</td><td>0.2</td></tr>
+</tbody>
 </table>
 
-<h2>🌾 Сухі крупи (в сирому вигляді)</h2>
+<h2 data-uk="🌾 Сухі крупи (в сирому вигляді)" data-en="🌾 Raw Grains & Cereals">🌾 Сухі крупи (в сирому вигляді)</h2>
 <table>
-<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
-<tr><td>Гречана ядриця</td><td>329</td><td>5.8</td></tr>
-<tr><td>Гречаний проділ</td><td>326</td><td>5.7</td></tr>
-<tr><td>Манна</td><td>326</td><td>6.0</td></tr>
-<tr><td>Вівсяна</td><td>345</td><td>5.3</td></tr>
-<tr><td>Перлова</td><td>324</td><td>5.5</td></tr>
-<tr><td>Пшоно</td><td>334</td><td>5.5</td></tr>
-<tr><td>Рисова</td><td>323</td><td>6.2</td></tr>
-<tr><td>Пшенична</td><td>325</td><td>5.9</td></tr>
-<tr><td>Ячна</td><td>322</td><td>5.5</td></tr>
-<tr><td>Геркулес</td><td>355</td><td>5.2</td></tr>
-<tr><td>Кукурудзяна</td><td>325</td><td>6.0</td></tr>
+<thead>
+  <tr>
+    <th data-uk="Найменування" data-en="Item Name">Найменування</th>
+    <th data-uk="Ккал / 100 г" data-en="Kcal / 100 g">Ккал / 100 г</th>
+    <th data-uk="ХО / 100 г" data-en="BU / 100 g">ХО / 100 г</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td data-uk="Гречана ядриця" data-en="Buckwheat groats (whole)">Гречана ядриця</td><td>329</td><td>5.8</td></tr>
+  <tr><td data-uk="Гречаний проділ" data-en="Buckwheat grits (cracked)">Гречаний проділ</td><td>326</td><td>5.7</td></tr>
+  <tr><td data-uk="Манна" data-en="Semolina">Манна</td><td>326</td><td>6.0</td></tr>
+  <tr><td data-uk="Вівсяна" data-en="Oat groats">Вівсяна</td><td>345</td><td>5.3</td></tr>
+  <tr><td data-uk="Перлова" data-en="Pearl barley">Перлова</td><td>324</td><td>5.5</td></tr>
+  <tr><td data-uk="Пшоно" data-en="Millet">Пшоно</td><td>334</td><td>5.5</td></tr>
+  <tr><td data-uk="Рисова" data-en="Rice">Рисова</td><td>323</td><td>6.2</td></tr>
+  <tr><td data-uk="Пшенична" data-en="Wheat groats">Пшенична</td><td>325</td><td>5.9</td></tr>
+  <tr><td data-uk="Ячна" data-en="Barley grits">Ячна</td><td>322</td><td>5.5</td></tr>
+  <tr><td data-uk="Геркулес" data-en="Rolled oats">Геркулес</td><td>355</td><td>5.2</td></tr>
+  <tr><td data-uk="Кукурудзяна" data-en="Corn groats">Кукурудзяна</td><td>325</td><td>6.0</td></tr>
+</tbody>
 </table>
 
-<h2>🍫 Солодощі та кондитерські вироби</h2>
+<h2 data-uk="🍫 Солодощі та кондитерські вироби" data-en="🍫 Sweets & Confectionery">🍫 Солодощі та кондитерські вироби</h2>
 <table>
-<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
-<tr><td>Вафлі з фруктовими начинками</td><td>342</td><td>5.9</td></tr>
-<tr><td>Вафлі з жировмісними начинками</td><td>530</td><td>4.5</td></tr>
-<tr><td>Тістечко листкове з кремом</td><td>544</td><td>3.6</td></tr>
-<tr><td>Тістечко листкове з яблуком</td><td>454</td><td>4.2</td></tr>
-<tr><td>Тістечко бісквітне з фруктовою начинкою</td><td>344</td><td>5.0</td></tr>
-<tr><td>Пряники</td><td>336</td><td>6.0</td></tr>
-<tr><td>Торт бісквітний</td><td>386</td><td>4.3</td></tr>
-<tr><td>Мед</td><td>308</td><td>6.7</td></tr>
-<tr><td>Драже фруктове</td><td>384</td><td>7.5</td></tr>
-<tr><td>Зефір</td><td>299</td><td>6.4</td></tr>
-<tr><td>Ірис</td><td>387</td><td>6.7</td></tr>
-<tr><td>Мармелад</td><td>296</td><td>6.9</td></tr>
-<tr><td>Карамель</td><td>296</td><td>7.8</td></tr>
-<tr><td>Цукерки шоколадні</td><td>396</td><td>4.3</td></tr>
-<tr><td>Пастила</td><td>305</td><td>6.5</td></tr>
-<tr><td>Цукор</td><td>374</td><td>8.3</td></tr>
-<tr><td>Халва тахінна</td><td>510</td><td>2.6</td></tr>
-<tr><td>Халва соняшникова</td><td>516</td><td>2.5</td></tr>
-<tr><td>Шоколад темний</td><td>540</td><td>2.6</td></tr>
-<tr><td>Шоколад молочний</td><td>547</td><td>4.3</td></tr>
+<thead>
+  <tr>
+    <th data-uk="Найменування" data-en="Item Name">Найменування</th>
+    <th data-uk="Ккал / 100 г" data-en="Kcal / 100 g">Ккал / 100 г</th>
+    <th data-uk="ХО / 100 г" data-en="BU / 100 g">ХО / 100 г</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td data-uk="Вафлі з фруктовими начинками" data-en="Wafers with fruit filling">Вафлі з фруктовими начинками</td><td>342</td><td>5.9</td></tr>
+  <tr><td data-uk="Вафлі з жировмісними начинками" data-en="Wafers with cream filling">Вафлі з жировмісними начинками</td><td>530</td><td>4.5</td></tr>
+  <tr><td data-uk="Тістечко листкове з кремом" data-en="Puff pastry with cream">Тістечко листкове з кремом</td><td>544</td><td>3.6</td></tr>
+  <tr><td data-uk="Тістечко листкове з яблуком" data-en="Apple puff pastry">Тістечко листкове з яблуком</td><td>454</td><td>4.2</td></tr>
+  <tr><td data-uk="Тістечко бісквітне з фруктовою начинкою" data-en="Sponge cake with fruit filling">Тістечко бісквітне з фруктовою начинкою</td><td>344</td><td>5.0</td></tr>
+  <tr><td data-uk="Пряники" data-en="Gingerbread / Spice cookies">Пряники</td><td>336</td><td>6.0</td></tr>
+  <tr><td data-uk="Торт бісквітний" data-en="Sponge cake">Торт бісквітний</td><td>386</td><td>4.3</td></tr>
+  <tr><td data-uk="Мед" data-en="Honey">Мед</td><td>308</td><td>6.7</td></tr>
+  <tr><td data-uk="Драже фруктове" data-en="Fruit dragees">Драже фруктове</td><td>384</td><td>7.5</td></tr>
+  <tr><td data-uk="Зефір" data-en="Zephyr (marshmallow)">Зефір</td><td>299</td><td>6.4</td></tr>
+  <tr><td data-uk="Ірис" data-en="Toffee / Fudge">Ірис</td><td>387</td><td>6.7</td></tr>
+  <tr><td data-uk="Мармелад" data-en="Fruit jelly / Marmalade">Мармелад</td><td>296</td><td>6.9</td></tr>
+  <tr><td data-uk="Карамель" data-en="Hard caramel candy">Карамель</td><td>296</td><td>7.8</td></tr>
+  <tr><td data-uk="Цукерки шоколадні" data-en="Chocolate candies">Цукерки шоколадні</td><td>396</td><td>4.3</td></tr>
+  <tr><td data-uk="Пастила" data-en="Pastila (apple marshmallow)">Пастила</td><td>305</td><td>6.5</td></tr>
+  <tr><td data-uk="Цукор" data-en="Sugar">Цукор</td><td>374</td><td>8.3</td></tr>
+  <tr><td data-uk="Халва тахінна" data-en="Tahini halva">Халва тахінна</td><td>510</td><td>2.6</td></tr>
+  <tr><td data-uk="Халва соняшникова" data-en="Sunflower halva">Халва соняшникова</td><td>516</td><td>2.5</td></tr>
+  <tr><td data-uk="Шоколад темний" data-en="Dark chocolate">Шоколад темний</td><td>540</td><td>2.6</td></tr>
+  <tr><td data-uk="Шоколад молочний" data-en="Milk chocolate">Шоколад молочний</td><td>547</td><td>4.3</td></tr>
+</tbody>
 </table>
 
-<h2>🍞 Борошняні продукти та хліб</h2>
+<h2 data-uk="🍞 Борошняні продукти та хліб" data-en="🍞 Bakery & Flour Products">🍞 Борошняні продукти та хліб</h2>
 <table>
-<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
-<tr><td>Хліб житній</td><td>214</td><td>3.4</td></tr>
-<tr><td>Хліб пшеничний I сорту</td><td>254</td><td>4.0</td></tr>
-<tr><td>Здобна випічка</td><td>297</td><td>4.3</td></tr>
-<tr><td>Бублики</td><td>312</td><td>5.6</td></tr>
-<tr><td>Сушки</td><td>330</td><td>6.0</td></tr>
-<tr><td>Сухарі пшеничні</td><td>331</td><td>5.8</td></tr>
-<tr><td>Сухарі вершкові</td><td>397</td><td>5.0</td></tr>
-<tr><td>Борошно пшеничне вищого сорту</td><td>327</td><td>5.9</td></tr>
-<tr><td>Борошно житнє</td><td>326</td><td>5.4</td></tr>
+<thead>
+  <tr>
+    <th data-uk="Найменування" data-en="Item Name">Найменування</th>
+    <th data-uk="Ккал / 100 г" data-en="Kcal / 100 g">Ккал / 100 г</th>
+    <th data-uk="ХО / 100 г" data-en="BU / 100 g">ХО / 100 г</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td data-uk="Хліб житній" data-en="Rye bread">Хліб житній</td><td>214</td><td>3.4</td></tr>
+  <tr><td data-uk="Хліб пшеничний I сорту" data-en="Wheat bread (1st grade)">Хліб пшеничний I сорту</td><td>254</td><td>4.0</td></tr>
+  <tr><td data-uk="Здобна випічка" data-en="Rich sweet buns / pastry">Здобна випічка</td><td>297</td><td>4.3</td></tr>
+  <tr><td data-uk="Бублики" data-en="Bagels / Bubliks">Бублики</td><td>312</td><td>5.6</td></tr>
+  <tr><td data-uk="Сушки" data-en="Sushki (mini ring pretzels)">Сушки</td><td>330</td><td>6.0</td></tr>
+  <tr><td data-uk="Сухарі пшеничні" data-en="Wheat croutons / rusks">Сухарі пшеничні</td><td>331</td><td>5.8</td></tr>
+  <tr><td data-uk="Сухарі вершкові" data-en="Cream rusks">Сухарі вершкові</td><td>397</td><td>5.0</td></tr>
+  <tr><td data-uk="Борошно пшеничне вищого сорту" data-en="Wheat flour (extra grade)">Борошно пшеничне вищого сорту</td><td>327</td><td>5.9</td></tr>
+  <tr><td data-uk="Борошно житнє" data-en="Rye flour">Борошно житнє</td><td>326</td><td>5.4</td></tr>
+</tbody>
 </table>
 
-<h2>🍏 Фрукти та ягоди</h2>
+<h2 data-uk="🍏 Фрукти та ягоди" data-en="🍏 Fruits & Berries">🍏 Фрукти та ягоди</h2>
 <table>
-<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
-<tr><td>Абрикоси</td><td>46</td><td>0.9</td></tr>
-<tr><td>Ананас</td><td>48</td><td>1.0</td></tr>
-<tr><td>Банани</td><td>91</td><td>1.7</td></tr>
-<tr><td>Вишня</td><td>49</td><td>0.9</td></tr>
-<tr><td>Гранат</td><td>52</td><td>1.1</td></tr>
-<tr><td>Груша</td><td>42</td><td>0.9</td></tr>
-<tr><td>Персики</td><td>44</td><td>0.8</td></tr>
-<tr><td>Слива</td><td>43</td><td>0.8</td></tr>
-<tr><td>Фініки</td><td>281</td><td>5.8</td></tr>
-<tr><td>Хурма</td><td>62</td><td>1.3</td></tr>
-<tr><td>Черешня</td><td>52</td><td>1.0</td></tr>
-<tr><td>Яблука</td><td>46</td><td>0.8</td></tr>
-<tr><td>Апельсин</td><td>38</td><td>0.7</td></tr>
-<tr><td>Грейпфрут</td><td>35</td><td>0.6</td></tr>
-<tr><td>Лимон</td><td>31</td><td>0.3</td></tr>
-<tr><td>Мандарин</td><td>38</td><td>0.7</td></tr>
-<tr><td>Виноград</td><td>69</td><td>1.3</td></tr>
-<tr><td>Полуниця / Суниці</td><td>41</td><td>0.6</td></tr>
-<tr><td>Малина</td><td>41</td><td>0.5</td></tr>
-<tr><td>Смородина чорна</td><td>40</td><td>0.6</td></tr>
-<tr><td>Чорниця</td><td>40</td><td>0.6</td></tr>
+<thead>
+  <tr>
+    <th data-uk="Найменування" data-en="Item Name">Найменування</th>
+    <th data-uk="Ккал / 100 г" data-en="Kcal / 100 g">Ккал / 100 г</th>
+    <th data-uk="ХО / 100 г" data-en="BU / 100 g">ХО / 100 г</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td data-uk="Абрикоси" data-en="Apricots">Абрикоси</td><td>46</td><td>0.9</td></tr>
+  <tr><td data-uk="Ананас" data-en="Pineapple">Ананас</td><td>48</td><td>1.0</td></tr>
+  <tr><td data-uk="Банани" data-en="Bananas">Банани</td><td>91</td><td>1.7</td></tr>
+  <tr><td data-uk="Вишня" data-en="Sour cherries">Вишня</td><td>49</td><td>0.9</td></tr>
+  <tr><td data-uk="Гранат" data-en="Pomegranate">Гранат</td><td>52</td><td>1.1</td></tr>
+  <tr><td data-uk="Груша" data-en="Pears">Груша</td><td>42</td><td>0.9</td></tr>
+  <tr><td data-uk="Персики" data-en="Peaches">Персики</td><td>44</td><td>0.8</td></tr>
+  <tr><td data-uk="Слива" data-en="Plums">Слива</td><td>43</td><td>0.8</td></tr>
+  <tr><td data-uk="Фініки" data-en="Dates">Фініки</td><td>281</td><td>5.8</td></tr>
+  <tr><td data-uk="Хурма" data-en="Persimmon">Хурма</td><td>62</td><td>1.3</td></tr>
+  <tr><td data-uk="Черешня" data-en="Sweet cherries">Черешня</td><td>52</td><td>1.0</td></tr>
+  <tr><td data-uk="Яблука" data-en="Apples">Яблука</td><td>46</td><td>0.8</td></tr>
+  <tr><td data-uk="Апельсин" data-en="Oranges">Апельсин</td><td>38</td><td>0.7</td></tr>
+  <tr><td data-uk="Грейпфрут" data-en="Grapefruit">Грейпфрут</td><td>35</td><td>0.6</td></tr>
+  <tr><td data-uk="Лимон" data-en="Lemons">Лимон</td><td>31</td><td>0.3</td></tr>
+  <tr><td data-uk="Мандарин" data-en="Tangerines">Мандарин</td><td>38</td><td>0.7</td></tr>
+  <tr><td data-uk="Виноград" data-en="Grapes">Виноград</td><td>69</td><td>1.3</td></tr>
+  <tr><td data-uk="Полуниця / Суниці" data-en="Strawberries / Wild strawberries">Полуниця / Суниці</td><td>41</td><td>0.6</td></tr>
+  <tr><td data-uk="Малина" data-en="Raspberries">Малина</td><td>41</td><td>0.5</td></tr>
+  <tr><td data-uk="Смородина чорна" data-en="Blackcurrant">Смородина чорна</td><td>40</td><td>0.6</td></tr>
+  <tr><td data-uk="Чорниця" data-en="Blueberries">Чорниця</td><td>40</td><td>0.6</td></tr>
+</tbody>
 </table>
 
-<h2>🥕 Овочі</h2>
+<h2 data-uk="🥕 Овочі" data-en="🥕 Vegetables">🥕 Овочі</h2>
 <table>
-<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
-<tr><td>Баклажани</td><td>24</td><td>0.4</td></tr>
-<tr><td>Горошок зелений</td><td>72</td><td>1.1</td></tr>
-<tr><td>Кабачки</td><td>27</td><td>0.4</td></tr>
-<tr><td>Капуста білокачанна</td><td>28</td><td>0.4</td></tr>
-<tr><td>Капуста цвітна</td><td>29</td><td>0.3</td></tr>
-<tr><td>Картопля</td><td>83</td><td>1.4</td></tr>
-<tr><td>Цибуля ріпчаста</td><td>43</td><td>0.7</td></tr>
-<tr><td>Морква червона</td><td>33</td><td>0.5</td></tr>
-<tr><td>Огірки ґрунтові</td><td>15</td><td>0.2</td></tr>
-<tr><td>Перець солодкий</td><td>27</td><td>0.4</td></tr>
-<tr><td>Редис</td><td>20</td><td>0.3</td></tr>
-<tr><td>Редька</td><td>34</td><td>0.5</td></tr>
-<tr><td>Буряк</td><td>48</td><td>0.8</td></tr>
-<tr><td>Томати (ґрунтові)</td><td>19</td><td>0.3</td></tr>
-<tr><td>Часник</td><td>106</td><td>1.8</td></tr>
+<thead>
+  <tr>
+    <th data-uk="Найменування" data-en="Item Name">Найменування</th>
+    <th data-uk="Ккал / 100 г" data-en="Kcal / 100 g">Ккал / 100 г</th>
+    <th data-uk="ХО / 100 г" data-en="BU / 100 g">ХО / 100 г</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td data-uk="Баклажани" data-en="Eggplants">Баклажани</td><td>24</td><td>0.4</td></tr>
+  <tr><td data-uk="Горошок зелений" data-en="Green peas">Горошок зелений</td><td>72</td><td>1.1</td></tr>
+  <tr><td data-uk="Кабачки" data-en="Zucchini">Кабачки</td><td>27</td><td>0.4</td></tr>
+  <tr><td data-uk="Капуста білокачанна" data-en="White cabbage">Капуста білокачанна</td><td>28</td><td>0.4</td></tr>
+  <tr><td data-uk="Капуста цвітна" data-en="Cauliflower">Капуста цвітна</td><td>29</td><td>0.3</td></tr>
+  <tr><td data-uk="Картопля" data-en="Potatoes">Картопля</td><td>83</td><td>1.4</td></tr>
+  <tr><td data-uk="Цибуля ріпчаста" data-en="Onions">Цибуля ріпчаста</td><td>43</td><td>0.7</td></tr>
+  <tr><td data-uk="Морква червона" data-en="Carrots">Морква червона</td><td>33</td><td>0.5</td></tr>
+  <tr><td data-uk="Огірки ґрунтові" data-en="Cucumbers">Огірки ґрунтові</td><td>15</td><td>0.2</td></tr>
+  <tr><td data-uk="Перець солодкий" data-en="Bell pepper">Перець солодкий</td><td>27</td><td>0.4</td></tr>
+  <tr><td data-uk="Редис" data-en="Radish">Редис</td><td>20</td><td>0.3</td></tr>
+  <tr><td data-uk="Редька" data-en="Black radish">Редька</td><td>34</td><td>0.5</td></tr>
+  <tr><td data-uk="Буряк" data-en="Beetroot">Буряк</td><td>48</td><td>0.8</td></tr>
+  <tr><td data-uk="Томати (ґрунтові)" data-en="Tomatoes">Томати (ґрунтові)</td><td>19</td><td>0.3</td></tr>
+  <tr><td data-uk="Часник" data-en="Garlic">Часник</td><td>106</td><td>1.8</td></tr>
+</tbody>
 </table>
 
-<h2>🌱 Бобові</h2>
+<h2 data-uk="🌱 Бобові" data-en="🌱 Legumes / Pulses">🌱 Бобові</h2>
 <table>
-<tr><th>Найменування</th><th>Ккал / 100 г</th><th>ХО / 100 г</th></tr>
-<tr><td>Горох лущений</td><td>323</td><td>4.3</td></tr>
-<tr><td>Соя</td><td>395</td><td>3.0</td></tr>
-<tr><td>Квасоля</td><td>309</td><td>3.9</td></tr>
-<tr><td>Сочевиця</td><td>310</td><td>3.9</td></tr>
+<thead>
+  <tr>
+    <th data-uk="Найменування" data-en="Item Name">Найменування</th>
+    <th data-uk="Ккал / 100 г" data-en="Kcal / 100 g">Ккал / 100 г</th>
+    <th data-uk="ХО / 100 г" data-en="BU / 100 g">ХО / 100 г</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td data-uk="Горох лущений" data-en="Split peas">Горох лущений</td><td>323</td><td>4.3</td></tr>
+  <tr><td data-uk="Соя" data-en="Soybeans">Соя</td><td>395</td><td>3.0</td></tr>
+  <tr><td data-uk="Квасоля" data-en="Kidney beans">Квасоля</td><td>309</td><td>3.9</td></tr>
+  <tr><td data-uk="Сочевиця" data-en="Lentils">Сочевиця</td><td>310</td><td>3.9</td></tr>
+</tbody>
 </table>
+
+<script>
+  function switchLanguage(lang) {
+    document.documentElement.lang = lang;
+    localStorage.setItem('selected_lang', lang);
+
+    document.querySelectorAll('[data-uk]').forEach(el => {
+      if (lang === 'en') {
+        el.textContent = el.getAttribute('data-en');
+      } else {
+        el.textContent = el.getAttribute('data-uk');
+      }
+    });
+
+    document.getElementById('btn-uk').classList.toggle('active', lang === 'uk');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+
+  // Відновлення вибраної мови при повторному відкритті
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('selected_lang') || 'uk';
+    switchLanguage(savedLang);
+  });
+</script>
 
 </body>
 </html>
